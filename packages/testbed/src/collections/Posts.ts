@@ -1,10 +1,10 @@
 import { CollectionConfig } from 'payload/types';
-import { allowAnyUser, allowPublished, requireOne } from 'payload-rbac';
+import { allowAnyUser, allowPublished, requireOne } from '@livit/portal.cms.payload-rbac';
 import { Content } from '../blocks/Content';
 import { Media } from '../blocks/Media';
 import { MediaContent } from '../blocks/MediaContent';
 import { MediaSlider } from '../blocks/MediaSlider';
-import { defineEndpoint } from 'payload-swagger';
+import { defineEndpoint } from '@livit/portal.cms.payload-swagger';
 
 const Posts: CollectionConfig = {
   // the slug is used for naming the collection in the database and the APIs that are open. For example: api/posts/${id}

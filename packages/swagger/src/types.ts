@@ -1,4 +1,4 @@
-import { Options as OpenApiOptions } from 'payload-openapi';
+import { Options as OpenApiOptions } from '@livit/portal.cms.payload-openapi';
 import { SwaggerUiOptions } from 'swagger-ui-express';
 
 interface SwaggerOptions {

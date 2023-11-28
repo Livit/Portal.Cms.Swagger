@@ -1,7 +1,7 @@
 import fs from 'fs/promises';
 import path from 'path';
 
-import { createDocument, Options } from 'payload-openapi';
+import { createDocument, Options } from '@livit/portal.cms.payload-openapi';
 import loadConfig from 'payload/dist/config/load';
 
 export default async (configPath?: string, outputPath = 'doc/spec.json', options?: Options) => {

@@ -9,12 +9,12 @@ import { createQuery } from '../query';
  * @param where optional filter
  * @returns the evaluated filter or `true` if the environment variable with the given key has the given value, else `false`
  * @example
- * import { allowEnvironmentValues } from 'payload-rbac';
+ * import { allowEnvironmentValues } from '@livit/portal.cms.payload-rbac';
  *
  * // Allow access only if process.env.SERVICE_ENV is equal to 'staging'
  * const access = allowEnvironmentValues('SERVICE_ENV', 'staging');
  * @example
- * import { allowEnvironmentValues } from 'payload-rbac';
+ * import { allowEnvironmentValues } from '@livit/portal.cms.payload-rbac';
  *
  * // Allow access to published documents, but only if process.env.SERVICE_ENV is equal to 'staging'
  * const access = allowEnvironmentValues<Alert>('SERVICE_ENV', 'staging', { _status: { equals: 'published' } });

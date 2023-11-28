@@ -7,12 +7,12 @@ import { createQuery } from '../query';
  * @param where optional filter
  * @returns the evaluated filter or `true` if the user is logged in, else `false`
  * @example
- * import { allowAnyUser } from 'payload-rbac';
+ * import { allowAnyUser } from '@livit/portal.cms.payload-rbac';
  *
  * // Allow full access to logged in users
  * const access = allowAnyUser();
  * @example
- * import { allowAnyUser } from 'payload-rbac';
+ * import { allowAnyUser } from '@livit/portal.cms.payload-rbac';
  *
  * // Allow logged in users access to documents for which they are the author
  * const access = allowAnyUser<Post>({ author: { equals: ({ req }) => req.user!.id } });

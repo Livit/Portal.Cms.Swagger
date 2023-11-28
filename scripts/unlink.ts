@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as os from 'os';
 import * as path from 'path';
 import { PackageJson } from './types';
-import { DEFAULT_LOCAL_LINKS, parseJSONFile } from './utils';
+import { DEFAULT_WORKSPACES, parseJSONFile } from './utils';
 
 const cwd = process.cwd();
 const root = path.join(cwd, '..');
@@ -18,7 +18,7 @@ function unlinkPackage(workspacePath: string): void {
     process.exit(1);
   }
 
-  if (!DEFAULT_LOCAL_LINKS.includes(packageName)) {
+  if (!DEFAULT_WORKSPACES.includes(packageName)) {
     return;
   }
 

@@ -8,7 +8,7 @@ import { Access, User } from '../types';
  * @param funcs the underlying access control functions
  * @returns the combined filter or `true` if access is granted, else `false`
  * @example
- * import { allowPublished, allowAnyUser, requireAll } from 'payload-rbac';
+ * import { allowPublished, allowAnyUser, requireAll } from '@livit/portal.cms.payload-rbac';
  *
  * // User needs to login to see the published documents (and cannot see draft documents)
  * const requireAll(allowPublished(), allowAnyUser());

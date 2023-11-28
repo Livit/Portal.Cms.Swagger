@@ -8,7 +8,7 @@ import { Access, User } from '../types';
  * @param funcs the underlying access control functions
  * @returns the combined filter or `true` if access is granted, else `false`
  * @example
- * import { allowPublished, allowUserWithRole, requireOne } from 'payload-rbac';
+ * import { allowPublished, allowUserWithRole, requireOne } from '@livit/portal.cms.payload-rbac';
  *
  * // Anyone has access to published documents, but only editors can see draft documents
  * const requireOne(allowPublished(), allowUserWithRole('editor'));
