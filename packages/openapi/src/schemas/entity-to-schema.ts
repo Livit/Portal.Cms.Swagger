@@ -49,7 +49,7 @@ export const entityToSchema = async (
   incomingEntity: SanitizedCollectionConfig | SanitizedGlobalConfig,
 ): Promise<{ schema: OpenAPIV3.SchemaObject; fieldDefinitions: Record<string, OpenAPIV3.SchemaObject> }> => {
   const fieldDefinitionsMap = new Map();
-  const jsonschema = payloadEntityToJSONSchema(config, incomingEntity, fieldDefinitionsMap);
+  const jsonschema = payloadEntityToJSONSchema(config, incomingEntity, fieldDefinitionsMap, 'text');
   const rawSchema = await convert(jsonschema);
   const fieldDefinitions = await reduceAsync(
     Array.from(fieldDefinitionsMap.entries()),
