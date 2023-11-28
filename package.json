@@ -10,6 +10,7 @@
     "testbed": "npm run build && npm run dev -w packages/testbed",
     "packages:link": "ts-node scripts/link.ts",
     "packages:unlink": "ts-node scripts/unlink.ts",
+    "packages:publish": "ts-node scripts/publish.ts",
     "set-payload-version": "./scripts/set-payload-version.sh"
   },
   "workspaces": [

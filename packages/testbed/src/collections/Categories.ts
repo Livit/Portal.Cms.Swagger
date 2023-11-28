@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 import CategorySummary from '../components/CategorySummary';
-import { defineCollection } from 'payload-swagger';
+import { defineCollection } from '@livit/portal.cms.payload-swagger';
 
 const Categories: CollectionConfig = defineCollection({
   slug: 'categories',

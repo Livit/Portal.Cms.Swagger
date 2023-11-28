@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 import path from 'path';
-import { blockAll } from 'payload-rbac';
+import { blockAll } from '@livit/portal.cms.payload-rbac';
 
 const Media: CollectionConfig = {
   slug: 'media',

@@ -2,7 +2,7 @@ import commandLineArgs from 'command-line-args';
 import commandLineUsage from 'command-line-usage';
 import path from 'path';
 
-import { Options as OpenapiOptions } from 'payload-openapi';
+import { Options as OpenapiOptions } from '@livit/portal.cms.payload-openapi';
 
 const optionList = [
   {

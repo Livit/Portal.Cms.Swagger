@@ -1,6 +1,6 @@
-import { buildConfig, Config } from 'payload/config';
+import { buildConfig } from 'payload/config';
 
-const config: Config = {
+const config = {
   collections: [
     {
       slug: 'pages',
@@ -67,4 +67,4 @@ const config: Config = {
   custom: { name: 'Customer portal' },
 };
 
-export default buildConfig(config);
+export default buildConfig(config as any);

@@ -82,13 +82,13 @@ const getPath = (basePath: string, relativePath: string): { path: string; parame
 };
 
 export const getCustomPaths = (config: Config, type: ConfigType): Pick<Required<OpenAPIV3.Document>, 'paths' | 'components'> => {
-  if (!config.endpoints?.length) return { paths: {}, components: {} };
+  if (!config.endpoints || !config.endpoints.length) return { paths: {}, components: {} };
 
   const paths: OpenAPIV3.PathsObject = {};
   const basePath = getBasePath(config, type);
   const tags = getTags(config, type);
 
-  for (const endpoint of config.endpoints.filter(endpoint => isRelevant(endpoint, type))) {
+  for (const endpoint of config.endpoints.filter((endpoint: Endpoint) => isRelevant(endpoint, type))) {
     if (endpoint.custom?.openapi === false) continue;
 
     const { path, parameters = [] } = getPath(basePath, endpoint.path);

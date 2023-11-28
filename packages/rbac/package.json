@@ -1,5 +1,5 @@
 {
-  "name": "payload-rbac",
+  "name": "@livit/portal.cms.payload-rbac",
   "version": "1.0.3",
   "description": "Simple role based access control for your Payload cms",
   "main": "dist/index.js",

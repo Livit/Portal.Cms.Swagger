@@ -1,5 +1,5 @@
 {
-  "name": "payload-query",
+  "name": "@livit/portal.cms.payload-query",
   "version": "1.0.2",
   "description": "Payload typesafe query utility",
   "main": "dist/index.js",

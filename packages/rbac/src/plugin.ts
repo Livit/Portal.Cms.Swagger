@@ -8,7 +8,7 @@ import { Options } from './types';
  * @returns the payload-rbac plugin
  * @example
  * import { buildConfig } from 'payload/config';
- * import rbac  from 'payload-rbac';
+ * import rbac  from '@livit/portal.cms.payload-rbac';
  *
  * export default buildConfig({
  *   plugins: [
