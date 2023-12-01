@@ -1,6 +1,6 @@
 import type { OpenAPIV3 } from 'openapi-types';
 
-export const error: OpenAPIV3.SchemaObject = {
+export const errorResponse: OpenAPIV3.SchemaObject = {
   title: 'Error response message',
   type: 'object',
   additionalProperties: false,

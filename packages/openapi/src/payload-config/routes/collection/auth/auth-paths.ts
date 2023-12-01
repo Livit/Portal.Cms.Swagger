@@ -10,6 +10,7 @@ export const getAuthPaths = (collection: SanitizedCollectionConfig): OpenAPIV3.P
       get: {
         summary: 'Current user data',
         description: 'Data about the current user',
+        operationId: `get_${schemaName}_me`,
         tags: ['auth'],
         responses: {
           '200': createRef(`${schemaName}Me`, 'responses'),
@@ -20,6 +21,7 @@ export const getAuthPaths = (collection: SanitizedCollectionConfig): OpenAPIV3.P
       post: {
         summary: 'Login',
         description: 'Login',
+        operationId: `login_${schemaName}`,
         tags: ['auth'],
         requestBody: createRef('login', 'requestBodies'),
         responses: {
@@ -32,6 +34,7 @@ export const getAuthPaths = (collection: SanitizedCollectionConfig): OpenAPIV3.P
       post: {
         summary: 'Logout',
         description: 'Logout',
+        operationId: `logout_${schemaName}`,
         tags: ['auth'],
         responses: {
           '200': createRef('confirmation', 'responses'),
@@ -43,6 +46,7 @@ export const getAuthPaths = (collection: SanitizedCollectionConfig): OpenAPIV3.P
       post: {
         summary: 'Refresh JWT',
         description: 'Refresh the JWT token',
+        operationId: `refresh_${schemaName}`,
         tags: ['auth'],
         responses: {
           '200': createRef(`${schemaName}Me`, 'responses'),

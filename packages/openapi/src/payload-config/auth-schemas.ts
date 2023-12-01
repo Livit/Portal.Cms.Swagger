@@ -65,8 +65,8 @@ export const getAuthSchemas = (config: SanitizedConfig, options: Options): OpenA
   return {
     requestBodies,
     responses: {
-      NoUserErrorResponse: createResponse('no user', 'error'),
-      InvalidTokenErrorResponse: createResponse('invalid token', 'error'),
+      NoUserErrorResponse: createResponse('no user', 'errorResponse'),
+      InvalidTokenErrorResponse: createResponse('invalid token', 'errorResponse'),
     },
   };
 };

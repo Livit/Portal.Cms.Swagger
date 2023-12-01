@@ -12,6 +12,7 @@ export const getUnlockPaths = (collection: SanitizedCollectionConfig, options: O
       post: {
         summary: 'Unlock account',
         description: 'Unlock account',
+        operationId: 'unlock_account',
         tags: ['auth'],
         security: [getAuth(options.access.apiKey)],
         requestBody: createRef('unlock', 'requestBodies'),

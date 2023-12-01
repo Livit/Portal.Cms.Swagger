@@ -30,6 +30,7 @@ export const getMainRoutes = async (
         get: {
           summary: `Find paginated ${plural}`,
           description: `Find paginated ${plural}`,
+          operationId: `get_${pluralSchemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'read', options.access),
           parameters: [...basicParameters, ...findParameters],
@@ -42,6 +43,7 @@ export const getMainRoutes = async (
         post: {
           summary: `Create a new ${singleItem}`,
           description: `Create a new ${singleItem}`,
+          operationId: `post_${schemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'create', options.access),
           parameters: basicParameters,
@@ -57,6 +59,7 @@ export const getMainRoutes = async (
         get: {
           summary: `Get a single ${singleItem} by its id`,
           description: `Get a single ${singleItem} by its id`,
+          operationId: `get_${schemaName}_by_id`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'read', options.access),
           parameters: [
@@ -80,6 +83,7 @@ export const getMainRoutes = async (
         patch: {
           summary: `Updates a ${singleItem}`,
           description: `Updates a ${singleItem}`,
+          operationId: `patch_${schemaName}_by_id`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'update', options.access),
           parameters: [
@@ -103,6 +107,7 @@ export const getMainRoutes = async (
         delete: {
           summary: `Deletes an existing ${singleItem}`,
           description: `Deletes an existing ${singleItem}`,
+          operationId: `delete_${schemaName}_by_id`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'delete', options.access),
           parameters: [

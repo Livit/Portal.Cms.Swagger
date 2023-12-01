@@ -164,7 +164,7 @@ const Post: CollectionConfig = {
       method: 'get',
       responseSchema: 'posts',
       errorResponseSchemas: {
-        404: 'error',
+        404: 'errorResponse',
       },
       queryParameters: {
         limit: { schema: { type: 'number' } },

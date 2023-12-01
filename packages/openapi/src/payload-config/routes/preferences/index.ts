@@ -87,6 +87,7 @@ export const createPreferenceRouts = (options: Options): Pick<Required<OpenAPIV3
       get: {
         summary: 'Get a preference by key',
         description: 'Get a preference by key',
+        operationId: `get_preference_by_key`,
         tags: ['preferences'],
         security,
         parameters,
@@ -97,6 +98,7 @@ export const createPreferenceRouts = (options: Options): Pick<Required<OpenAPIV3
       post: {
         summary: 'Create or update a preference by key',
         description: 'Create or update a preference by key',
+        operationId: `post_preference`,
         tags: ['preferences'],
         security,
         parameters,
@@ -108,6 +110,7 @@ export const createPreferenceRouts = (options: Options): Pick<Required<OpenAPIV3
       delete: {
         summary: 'Delete a preference by key',
         description: 'Delete a preference by key',
+        operationId: `delete_preference`,
         tags: ['preferences'],
         security,
         parameters,

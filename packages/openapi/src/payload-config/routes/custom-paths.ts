@@ -94,6 +94,7 @@ export const getCustomPaths = (config: Config, type: ConfigType): Pick<Required<
     const { path, parameters = [] } = getPath(basePath, endpoint.path);
     const {
       summary,
+      operationId,
       description = 'custom operation',
       responseSchema = { type: 'object' },
       errorResponseSchemas = {},
@@ -104,6 +105,7 @@ export const getCustomPaths = (config: Config, type: ConfigType): Pick<Required<
     const operation: OpenAPIV3.OperationObject = {
       summary: summary || description,
       description,
+      operationId,
       tags,
       parameters: [
         ...parameters,

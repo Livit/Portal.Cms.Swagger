@@ -12,6 +12,7 @@ export const getPasswordRecoveryPaths = (collection: SanitizedCollectionConfig, 
       post: {
         summary: 'Start password reset',
         description: 'Entry point for password reset workflow. Sends password reset email.',
+        operationId: 'forgot_password',
         tags: ['auth'],
         requestBody: createRef('passwordForgotten', 'requestBodies'),
         responses: {
@@ -23,6 +24,7 @@ export const getPasswordRecoveryPaths = (collection: SanitizedCollectionConfig, 
       post: {
         summary: 'Reset password',
         description: 'Reset password',
+        operationId: 'reset_password',
         tags: ['auth'],
         requestBody: createRef('passwordReset', 'requestBodies'),
         responses: {

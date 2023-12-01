@@ -58,6 +58,7 @@ export const createVersionRoutes = async (
       get: {
         summary: `${singular} versions`,
         description: `Find and query paginated versions of ${plural}`,
+        operationId: `get_${schemaName}_versions`,
         tags,
         security,
         parameters: [...basicParameters, ...findParameters],
@@ -70,6 +71,7 @@ export const createVersionRoutes = async (
       get: {
         summary: `Get a single ${singular} version by its id`,
         description: `Get a single ${singular} version by its id`,
+        operationId: `get_${schemaName}_version_by_id`,
         tags,
         security,
         parameters: [
@@ -91,6 +93,7 @@ export const createVersionRoutes = async (
       post: {
         summary: `Restore a ${singular} version by its id`,
         description: `Restore a ${singular} version by its id`,
+        operationId: `post_${schemaName}_version_by_id`,
         tags,
         security: await getRouteAccess(config, 'update', options.access),
         parameters: [
