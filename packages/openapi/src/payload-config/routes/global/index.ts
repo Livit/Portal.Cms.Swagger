@@ -22,6 +22,7 @@ export const getGlobalRoutes = async (
       get: {
         summary: `Get the ${singleItem}`,
         description: `Get the ${singleItem}`,
+        operationId: `get_${schemaName}`,
         tags: [`global ${global.slug}`],
         security: await getRouteAccess(global, 'read', options.access),
         parameters: basicParameters,
@@ -32,6 +33,7 @@ export const getGlobalRoutes = async (
       post: {
         summary: `Updates the ${singleItem}`,
         description: `Updates the ${singleItem}`,
+        operationId: `post_${schemaName}`,
         tags: [`global ${global.slug}`],
         security: await getRouteAccess(global, 'update', options.access),
         parameters: basicParameters,

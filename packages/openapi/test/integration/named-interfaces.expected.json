@@ -711,7 +711,7 @@
       "cookieAuth": { "in": "cookie", "type": "apiKey", "name": "payload-token" }
     },
     "schemas": {
-      "error": {
+      'errorResponse': {
         "title": "Error response message",
         "type": "object",
         "additionalProperties": false,

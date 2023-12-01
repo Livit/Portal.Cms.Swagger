@@ -1,10 +1,11 @@
 import { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types';
 import { getLabels } from './get-label';
+import { formatNames } from 'payload/utilities';
 
 const getText = (collection: SanitizedCollectionConfig | SanitizedGlobalConfig, kind: 'singular' | 'plural'): string => {
   const labels = getLabels(collection, kind);
   if (typeof labels === 'object' && labels.openapi) return labels.openapi;
-  return kind === 'singular' ? collection.slug : `${getText(collection, 'singular')}s`;
+  return formatNames(collection.slug)[kind];
 };
 
 export const getSingularSchemaName = (collection: SanitizedCollectionConfig | SanitizedGlobalConfig): string =>

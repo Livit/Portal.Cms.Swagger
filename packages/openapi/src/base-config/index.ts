@@ -1,6 +1,6 @@
 import type { OpenAPIV3 } from 'openapi-types';
 
-import { error } from './error';
+import { errorResponse } from './error';
 import { confirmation } from './confirm';
 import where from './where';
 import { Options } from '../options';
@@ -9,15 +9,15 @@ import { createResponse } from '../schemas';
 export * from './parameters';
 
 const schemas: Record<string, OpenAPIV3.SchemaObject> = {
-  error,
+  errorResponse,
   confirmation,
   where,
 };
 
 const responses: Record<string, OpenAPIV3.ResponseObject> = {
-  'InvalidRequestErrorResponse': createResponse('invalid request', 'error'),
-  'UnauthorizedErrorResponse': createResponse('unauthorized', 'error'),
-  'NotFoundErrorResponse': createResponse('not found', 'error'),
+  'InvalidRequestErrorResponse': createResponse('invalid request', 'errorResponse'),
+  'UnauthorizedErrorResponse': createResponse('unauthorized', 'errorResponse'),
+  'NotFoundErrorResponse': createResponse('not found', 'errorResponse'),
   confirmationResponse: createResponse('confirmed', 'confirmation'),
 };
 

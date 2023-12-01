@@ -8,11 +8,12 @@ import access from './access-schema';
 export const createAccessRoute = (options: Options): Pick<Required<OpenAPIV3.Document>, 'paths' | 'components'> => {
   if (!options.include.authPaths) return { paths: {}, components: {} };
 
-  const paths = {
+  const paths: OpenAPIV3.PathsObject = {
     '/access': {
       get: {
         summary: "Current user's resource access",
         description: "Lists the user's access per resource",
+        operationId: 'get_access',
         tags: ['auth'],
         security: [getAuth(options.access.apiKey)],
         responses: {

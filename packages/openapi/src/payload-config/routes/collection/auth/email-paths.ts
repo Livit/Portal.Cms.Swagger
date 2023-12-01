@@ -10,6 +10,7 @@ export const getEmailVerificationPaths = (collection: SanitizedCollectionConfig)
       post: {
         summary: 'Verify email',
         description: 'Verify email',
+        operationId: 'verify_email',
         tags: ['auth'],
         parameters: [
           {

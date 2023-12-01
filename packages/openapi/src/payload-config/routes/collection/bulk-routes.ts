@@ -3,7 +3,7 @@ import { SanitizedCollectionConfig } from 'payload/types';
 import { basicParameters, findParameters } from '../../../base-config';
 import { Options } from '../../../options';
 import { createRef, createResponse } from '../../../schemas';
-import { getPlural, getSingularSchemaName } from '../../../utils';
+import { getPlural, getPluralSchemaName, getSingularSchemaName } from '../../../utils';
 import { getRouteAccess, includeIfAvailable } from '../../route-access';
 
 export const getBulkRoutes = async (
@@ -14,6 +14,7 @@ export const getBulkRoutes = async (
 
   const plural = getPlural(collection);
   const schemaName = getSingularSchemaName(collection);
+  const pluralSchemaName = getPluralSchemaName(collection);
 
   const paths: OpenAPIV3.PathsObject = {
     [`/${collection.slug}`]: {
@@ -21,6 +22,7 @@ export const getBulkRoutes = async (
         patch: {
           summary: `Update multiple ${plural}`,
           description: `Update all ${plural} matching the where query`,
+          operationId: `patch_${pluralSchemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'update', options.access),
           parameters: [...findParameters.map(param => ({ ...param, required: param.name === 'where' })), ...basicParameters],
@@ -34,6 +36,7 @@ export const getBulkRoutes = async (
         delete: {
           summary: `Delete multiple ${plural}`,
           description: `Delete all ${plural} matching the where query`,
+          operationId: `delete_${pluralSchemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'delete', options.access),
           parameters: [...findParameters.map(param => ({ ...param, required: param.name === 'where' })), ...basicParameters],
