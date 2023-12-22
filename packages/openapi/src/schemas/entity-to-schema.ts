@@ -29,6 +29,13 @@ const stripEmptyRequired = (schema: OpenAPIV3.SchemaObject): OpenAPIV3.SchemaObj
     };
   }
 
+  // Payload is disabling all the additionalProperties in the schemas by default.
+  // This need to be unset instead of giving `false` value to allow receiver/generator to support
+  // for additional properties to model classes.
+  if (schema.additionalProperties === false) {
+    delete schema.additionalProperties;
+  }
+
   return {
     ...schema,
     properties:

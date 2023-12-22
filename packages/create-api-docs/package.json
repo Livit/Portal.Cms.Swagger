@@ -12,7 +12,7 @@
     "command-line-args": "^5.2.1",
     "command-line-usage": "^7.0.1",
     "get-tsconfig": "^4.5.0",
-    "payload": "^2.2.0"
+    "payload": "^2.4.0"
   },
   "scripts": {
     "build": "rimraf dist && tsc --sourceMap false",
