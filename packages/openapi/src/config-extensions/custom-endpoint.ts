@@ -4,6 +4,7 @@ import { Endpoint } from 'payload/config';
 export interface EndpointDocumentation {
   summary?: string;
   description: string;
+  hasSecurity?: boolean;
   operationId: string;
   responseSchema: OpenAPIV3.SchemaObject | string;
   errorResponseSchemas?: Record<number, OpenAPIV3.SchemaObject | string>;
@@ -20,7 +21,17 @@ export interface EndpointDocumentation {
 type DocumentedEndpoint = Endpoint & EndpointDocumentation;
 
 export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
-  const { summary, description, operationId, responseSchema, errorResponseSchemas, queryParameters, custom, ...rest } = endpoint;
+  const {
+    summary,
+    description,
+    operationId,
+    responseSchema,
+    errorResponseSchemas,
+    hasSecurity,
+    queryParameters,
+    custom,
+    ...rest
+  } = endpoint;
   return {
     ...rest,
     custom: {
@@ -28,6 +39,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
       openapi: {
         summary,
         description,
+        hasSecurity,
         operationId,
         responseSchema,
         errorResponseSchemas,

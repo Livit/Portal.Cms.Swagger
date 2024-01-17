@@ -64,7 +64,7 @@ export const getGlobalRoutes = async (
   };
 
   const versionRoutes = await createVersionRoutes(global, options, payloadConfig);
-  const customRoutes = getCustomPaths(global, 'global');
+  const customRoutes = await getCustomPaths(global, 'global', options);
 
   return merge({ paths, components }, versionRoutes, customRoutes);
 };
