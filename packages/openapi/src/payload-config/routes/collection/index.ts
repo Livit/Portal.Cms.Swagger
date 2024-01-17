@@ -19,7 +19,7 @@ export const getCollectionRoutes = async (
   const bulkRoutes = await getBulkRoutes(collection, options);
 
   const authRoutes = getAuthRoutes(collection, options);
-  const customRoutes = await getCustomPaths(collection, 'collection', options);
+  const customRoutes = getCustomPaths(collection, 'collection', options);
 
   return merge(mainRoutes, versionRoutes, bulkRoutes, authRoutes, customRoutes);
 };

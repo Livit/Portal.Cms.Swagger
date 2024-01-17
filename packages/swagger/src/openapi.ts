@@ -7,7 +7,18 @@ export type { EndpointDocumentation, Example } from '@livit/portal.cms.payload-o
 type DocumentedEndpoint = Endpoint & EndpointDocumentation;
 
 export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
-  const { summary, description, operationId, responseSchema, errorResponseSchemas, queryParameters, custom, ...rest } = endpoint;
+  const {
+    summary,
+    description,
+    hasSecurity,
+    operationId,
+    responseSchema,
+    errorResponseSchemas,
+    queryParameters,
+    custom,
+    ...rest
+  } = endpoint;
+
   return {
     ...rest,
     custom: {
@@ -15,6 +26,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
       openapi: {
         summary,
         description,
+        hasSecurity,
         operationId,
         responseSchema,
         errorResponseSchemas,

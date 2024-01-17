@@ -22,7 +22,7 @@ export const analyzePayload = async (payloadConfig: SanitizedConfig, options: Op
   );
 
   const { paths: customPaths, components: customComponents } = options.include.custom
-    ? await getCustomPaths(payloadConfig, 'payload', options)
+    ? getCustomPaths(payloadConfig, 'payload', options)
     : { paths: {}, components: {} };
 
   const paths = merge<OpenAPIV3.PathsObject>(
