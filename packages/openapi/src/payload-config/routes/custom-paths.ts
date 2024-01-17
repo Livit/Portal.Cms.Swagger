@@ -5,6 +5,8 @@ import { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types'
 import { createResponse } from '../../schemas';
 import { getEndpointDocumentation } from '../../config-extensions';
 import { objectEntries } from 'ts-powertools';
+import { getRouteAccess } from '../route-access';
+import { Options } from '../../options';
 
 type Config = SanitizedConfig | SanitizedCollectionConfig | SanitizedGlobalConfig;
 type ConfigType = 'payload' | 'global' | 'collection';
@@ -20,6 +22,21 @@ const getTags = (config: Config, type: ConfigType) => {
   if (isPayloadConfig(config)) return ['custom'];
   if (type === 'global') return [`global ${config.slug}`];
   return [config.slug];
+};
+
+const getRouteAccessByMethod = (method: Endpoint['method']): keyof SanitizedCollectionConfig['access'] => {
+  switch (method) {
+    case 'delete':
+      return 'delete';
+    case 'get':
+      return 'read';
+    case 'post':
+      return 'create';
+    case 'put':
+      return 'update';
+    default:
+      throw new Error(`${method} is not supported`);
+  }
 };
 
 // We could use the enum here, but prefer to keep the openapi-types lib as devdependecy only
@@ -81,7 +98,11 @@ const getPath = (basePath: string, relativePath: string): { path: string; parame
   return { path, parameters };
 };
 
-export const getCustomPaths = (config: Config, type: ConfigType): Pick<Required<OpenAPIV3.Document>, 'paths' | 'components'> => {
+export const getCustomPaths = async (
+  config: Config,
+  type: ConfigType,
+  options: Options,
+): Promise<Pick<Required<OpenAPIV3.Document>, 'paths' | 'components'>> => {
   if (!config.endpoints || !config.endpoints.length) return { paths: {}, components: {} };
 
   const paths: OpenAPIV3.PathsObject = {};
@@ -95,6 +116,7 @@ export const getCustomPaths = (config: Config, type: ConfigType): Pick<Required<
     const {
       summary,
       operationId,
+      hasSecurity,
       description = 'custom operation',
       responseSchema = { type: 'object' },
       errorResponseSchemas = {},
@@ -102,10 +124,16 @@ export const getCustomPaths = (config: Config, type: ConfigType): Pick<Required<
     } = getEndpointDocumentation(endpoint) || {};
     if (!paths[path]) paths[path] = {};
 
+    const security =
+      hasSecurity && (config as SanitizedCollectionConfig).slug
+        ? await getRouteAccess(config as SanitizedCollectionConfig, getRouteAccessByMethod(endpoint.method), options.access)
+        : undefined;
+
     const operation: OpenAPIV3.OperationObject = {
       summary: summary || description,
       description,
       operationId,
+      security,
       tags,
       parameters: [
         ...parameters,
