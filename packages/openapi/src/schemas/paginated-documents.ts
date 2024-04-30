@@ -1,15 +1,9 @@
 import type { OpenAPIV3 } from 'openapi-types';
 
-export const createPaginatedDocumentSchema = (schemaName: string, title: string): OpenAPIV3.SchemaObject => ({
+export const paginatedDocument: OpenAPIV3.SchemaObject = {
+  title: 'Paginated Document',
   type: 'object',
-  title,
   properties: {
-    docs: {
-      type: 'array',
-      items: {
-        '$ref': `#/components/schemas/${schemaName}`,
-      },
-    },
     totalDocs: { type: 'number' },
     limit: { type: 'number' },
     totalPages: { type: 'number' },
@@ -20,5 +14,27 @@ export const createPaginatedDocumentSchema = (schemaName: string, title: string)
     prevPage: { type: 'number' },
     nextPage: { type: 'number' },
   },
-  required: ['docs', 'totalDocs', 'limit', 'totalPages', 'page', 'pagingCounter', 'hasPrevPage', 'hasNextPage'],
-});
+  required: ['totalDocs', 'limit', 'totalPages', 'page', 'pagingCounter', 'hasPrevPage', 'hasNextPage'],
+};
+
+export const createPaginatedDocumentSchema = (schemaName: string, title: string): OpenAPIV3.SchemaObject => {
+  return {
+    title,
+    allOf: [
+      {
+        properties: {
+          docs: {
+            type: 'array',
+            items: {
+              '$ref': `#/components/schemas/${schemaName}`,
+            },
+          },
+        },
+        required: ['docs'],
+      },
+      {
+        $ref: '#/components/schemas/paginatedDocument',
+      },
+    ],
+  };
+};
