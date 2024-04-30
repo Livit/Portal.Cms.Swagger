@@ -5,12 +5,14 @@ import { confirmation } from './confirm';
 import where from './where';
 import { Options } from '../options';
 import { createResponse } from '../schemas';
+import { paginatedDocument } from '../schemas/paginated-documents';
 
 export * from './parameters';
 
 const schemas: Record<string, OpenAPIV3.SchemaObject> = {
   errorResponse,
   confirmation,
+  paginatedDocument,
   where,
 };
 
