@@ -3,6 +3,7 @@ import { createDocument } from '@livit/portal.cms.payload-openapi';
 import swaggerUi from 'swagger-ui-express';
 import { Options } from './types';
 import { serveFile } from './utils/serve-file';
+import { specsHandler } from './utils/specs-handler';
 
 export const loadSwagger = async (
   { express, config, logger }: Pick<Payload, 'express' | 'config' | 'logger'>,
@@ -24,7 +25,7 @@ export const loadSwagger = async (
 
   try {
     const document = await createDocument(config, options);
-    express.use(specsRoute, (req, res) => res.json(document));
+    express.use(specsRoute, specsHandler(document));
 
     if (document.info.license?.url) {
       express.get(licenseRoute, serveFile('LICENSE'));
