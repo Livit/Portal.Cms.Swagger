@@ -13,6 +13,7 @@ import {
 import { getRouteAccess, includeIfAvailable } from '../../route-access';
 import { getSingular, getPlural, getSingularSchemaName, getPluralSchemaName } from '../../../utils';
 import { SanitizedConfig } from 'payload/config';
+import { createUpsertSchema } from '../../../schemas/upsert-schema';
 
 export const getMainRoutes = async (
   collection: SanitizedCollectionConfig,
@@ -145,7 +146,7 @@ export const getMainRoutes = async (
     },
     requestBodies: {
       ...includeIfAvailable(collection, ['create', 'update'], {
-        [`${schemaName}Request`]: createRequestBody(schemaName),
+        [`${schemaName}Request`]: createRequestBody(createUpsertSchema(schemaName, schema)),
       }),
     },
     responses: {
