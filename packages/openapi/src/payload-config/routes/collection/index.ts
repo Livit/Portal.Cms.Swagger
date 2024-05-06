@@ -1,6 +1,5 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import { SanitizedCollectionConfig } from 'payload/types';
-import { SanitizedConfig } from 'payload/config';
 import { Options } from '../../../options';
 import { merge } from '../../../utils';
 import { createVersionRoutes } from '../version-paths';
@@ -8,6 +7,7 @@ import { getCustomPaths } from '../custom-paths';
 import { getAuthRoutes } from './auth';
 import { getBulkRoutes } from './bulk-routes';
 import { getMainRoutes } from './main-routes';
+import { SanitizedConfig } from 'payload/dist/exports/config';
 
 export const getCollectionRoutes = async (
   collection: SanitizedCollectionConfig,

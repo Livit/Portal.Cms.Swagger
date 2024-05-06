@@ -3,12 +3,12 @@ import fs from 'fs';
 import type { OpenAPIV3 } from 'openapi-types';
 import path from 'path';
 import { DeepPartial } from 'ts-essentials';
-import { SanitizedConfig } from 'payload/config';
 import { analyzePayload } from './payload-config';
 
 import createBaseConfig from './base-config';
 import { getUnsupportedSchema, isSupported, merge } from './utils';
 import { parseOptions, RawOptions as Options } from './options';
+import { SanitizedConfig } from 'payload/dist/exports/config';
 
 interface PackageInfo {
   name?: string;

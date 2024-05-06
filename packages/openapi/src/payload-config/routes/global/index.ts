@@ -1,6 +1,5 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import { SanitizedGlobalConfig } from 'payload/types';
-import { SanitizedConfig } from 'payload/config';
 import { Options } from '../../../options';
 import { basicParameters } from '../../../base-config';
 import { createRef, createRequestBody, createResponse, createUpsertConfirmationSchema, entityToSchema } from '../../../schemas';
@@ -8,6 +7,7 @@ import { getSingular, getSingularSchemaName, merge } from '../../../utils';
 import { getCustomPaths } from '../custom-paths';
 import { getRouteAccess } from '../../route-access';
 import { createVersionRoutes } from '../version-paths';
+import { SanitizedConfig } from 'payload/dist/exports/config';
 
 export const getGlobalRoutes = async (
   global: SanitizedGlobalConfig,
