@@ -14,7 +14,7 @@ function npmPublish(packageName: string): void {
       {
         console.log(`Building package ${packageName}`);
         execSync(`npm run build -w ${packageName}`, { stdio: 'inherit' });
-        execSync(`npm publish -w ${packageName}`, { stdio: 'inherit' });
+        execSync(`npm publish -w ${packageName} --access public`, { stdio: 'inherit' });
       }
       break;
     case '@livit/portal.cms.payload-swagger':
