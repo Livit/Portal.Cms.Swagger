@@ -62,7 +62,7 @@ export const entityToSchema = async (
     Array.from(fieldDefinitionsMap.entries()),
     async ([, definition]) => cleanReferences(stripEmptyRequired(await convert(definition)), config),
     (acc, curr, [key]) => {
-      acc[key] = curr;
+      acc[formatNames(key).singular] = curr;
       return acc;
     },
     {} as Record<string, OpenAPIV3.SchemaObject>,
