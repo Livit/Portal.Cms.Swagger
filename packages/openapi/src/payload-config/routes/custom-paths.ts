@@ -1,12 +1,12 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import nodePath from 'path';
-import { Endpoint, SanitizedConfig } from 'payload/config';
 import { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types';
 import { createResponse } from '../../schemas';
 import { getEndpointDocumentation } from '../../config-extensions';
 import { objectEntries } from 'ts-powertools';
 import { getAuth } from '../route-access';
 import { Options } from '../../options';
+import { Endpoint, SanitizedConfig } from 'payload/dist/exports/config';
 
 type Config = SanitizedConfig | SanitizedCollectionConfig | SanitizedGlobalConfig;
 type ConfigType = 'payload' | 'global' | 'collection';

@@ -1,6 +1,5 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import { SanitizedCollectionConfig } from 'payload/types';
-import { SanitizedConfig } from 'payload/config';
 import { basicParameters, findParameters } from '../../../base-config';
 import { Options } from '../../../options';
 import {
@@ -13,6 +12,7 @@ import {
 } from '../../../schemas';
 import { getRouteAccess, includeIfAvailable } from '../../route-access';
 import { getSingular, getPlural, getSingularSchemaName, getPluralSchemaName } from '../../../utils';
+import { SanitizedConfig } from 'payload/dist/exports/config';
 
 export const getMainRoutes = async (
   collection: SanitizedCollectionConfig,

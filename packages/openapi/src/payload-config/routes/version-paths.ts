@@ -1,11 +1,11 @@
 import type { OpenAPIV3 } from 'openapi-types';
-import { SanitizedConfig } from 'payload/config';
 import { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types';
 import { basicParameters, findParameters } from '../../base-config';
 import { Options } from '../../options';
 import { createPaginatedDocumentSchema, createRef, createResponse, entityToSchema } from '../../schemas';
 import { getPlural, getSingular, getSingularSchemaName } from '../../utils';
 import { getRouteAccess, isRouteAvailable } from '../route-access';
+import { SanitizedConfig } from 'payload/dist/exports/config';
 
 const getRootPath = (slug: string, payloadConfig: SanitizedConfig) => {
   if (payloadConfig.globals?.find(global => global.slug === slug)) return `/globals/${slug}/versions`;

@@ -1,4 +1,3 @@
-import { SanitizedConfig } from 'payload/config';
 import type { OpenAPIV3 } from 'openapi-types';
 
 import { createAccessRoute } from './routes/access';
@@ -9,6 +8,7 @@ import { getCustomPaths } from './routes/custom-paths';
 import { createPreferenceRouts } from './routes/preferences';
 import { merge } from '../utils';
 import { getAuthSchemas } from './auth-schemas';
+import { SanitizedConfig } from 'payload/dist/exports/config';
 
 export const analyzePayload = async (payloadConfig: SanitizedConfig, options: Options): Promise<Partial<OpenAPIV3.Document>> => {
   const { paths: preferencePaths, components: preferenceComponents } = createPreferenceRouts(options);

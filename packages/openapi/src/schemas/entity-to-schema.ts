@@ -1,10 +1,10 @@
 import type { OpenAPIV3 } from 'openapi-types';
-import type { SanitizedConfig } from 'payload/config';
 import type { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types';
 import { formatNames, entityToJSONSchema as payloadEntityToJSONSchema } from 'payload/utilities';
 import convert from '@openapi-contrib/json-schema-to-openapi-schema';
 import { reduceAsync } from 'ts-powertools';
 import { getDescription, getSingularSchemaName } from '../utils';
+import { SanitizedConfig } from 'payload/dist/exports/config';
 
 const cleanReferences = (schema: OpenAPIV3.SchemaObject, config: SanitizedConfig): OpenAPIV3.SchemaObject => {
   const asString = JSON.stringify(schema);
