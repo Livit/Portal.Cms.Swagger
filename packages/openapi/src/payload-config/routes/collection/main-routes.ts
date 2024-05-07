@@ -12,7 +12,7 @@ import {
 } from '../../../schemas';
 import { getRouteAccess, includeIfAvailable } from '../../route-access';
 import { getSingular, getPlural, getSingularSchemaName, getPluralSchemaName } from '../../../utils';
-import { SanitizedConfig } from 'payload/dist/exports/config';
+import { SanitizedConfig } from 'payload/config';
 
 export const getMainRoutes = async (
   collection: SanitizedCollectionConfig,

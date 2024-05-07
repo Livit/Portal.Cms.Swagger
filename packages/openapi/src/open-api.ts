@@ -8,7 +8,7 @@ import { analyzePayload } from './payload-config';
 import createBaseConfig from './base-config';
 import { getUnsupportedSchema, isSupported, merge } from './utils';
 import { parseOptions, RawOptions as Options } from './options';
-import { SanitizedConfig } from 'payload/dist/exports/config';
+import { SanitizedConfig } from 'payload/config';
 
 interface PackageInfo {
   name?: string;

@@ -6,7 +6,7 @@ import { getEndpointDocumentation } from '../../config-extensions';
 import { objectEntries } from 'ts-powertools';
 import { getAuth } from '../route-access';
 import { Options } from '../../options';
-import { Endpoint, SanitizedConfig } from 'payload/dist/exports/config';
+import { Endpoint, SanitizedConfig } from 'payload/config';
 
 type Config = SanitizedConfig | SanitizedCollectionConfig | SanitizedGlobalConfig;
 type ConfigType = 'payload' | 'global' | 'collection';
