@@ -146,7 +146,7 @@ export const getMainRoutes = async (
     },
     requestBodies: {
       ...includeIfAvailable(collection, ['create', 'update'], {
-        [`${schemaName}Request`]: createRequestBody(createUpsertSchema(schemaName, schema)),
+        [`${schemaName}Request`]: createRequestBody(createUpsertSchema(payloadConfig, schema)),
       }),
     },
     responses: {
