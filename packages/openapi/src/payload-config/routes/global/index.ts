@@ -7,7 +7,7 @@ import { getSingular, getSingularSchemaName, merge } from '../../../utils';
 import { getCustomPaths } from '../custom-paths';
 import { getRouteAccess } from '../../route-access';
 import { createVersionRoutes } from '../version-paths';
-import { SanitizedConfig } from 'payload/dist/exports/config';
+import { SanitizedConfig } from 'payload/config';
 
 export const getGlobalRoutes = async (
   global: SanitizedGlobalConfig,

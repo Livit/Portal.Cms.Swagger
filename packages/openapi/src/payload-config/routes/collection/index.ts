@@ -7,7 +7,7 @@ import { getCustomPaths } from '../custom-paths';
 import { getAuthRoutes } from './auth';
 import { getBulkRoutes } from './bulk-routes';
 import { getMainRoutes } from './main-routes';
-import { SanitizedConfig } from 'payload/dist/exports/config';
+import { SanitizedConfig } from 'payload/config';
 
 export const getCollectionRoutes = async (
   collection: SanitizedCollectionConfig,

@@ -4,7 +4,7 @@ import { formatNames, entityToJSONSchema as payloadEntityToJSONSchema } from 'pa
 import convert from '@openapi-contrib/json-schema-to-openapi-schema';
 import { reduceAsync } from 'ts-powertools';
 import { getDescription, getSingularSchemaName } from '../utils';
-import { SanitizedConfig } from 'payload/dist/exports/config';
+import { SanitizedConfig } from 'payload/config';
 
 const cleanReferences = (schema: OpenAPIV3.SchemaObject, config: SanitizedConfig): OpenAPIV3.SchemaObject => {
   const asString = JSON.stringify(schema);
@@ -21,7 +21,7 @@ const isReferenceObject = (schema: OpenAPIV3.ReferenceObject | OpenAPIV3.SchemaO
   '$ref' in schema;
 
 // Officialy empty required is allowed for openapi v3 and v3.1, but it's not for swagger v2 and some tools don't accept it
-const stripEmptyRequired = (schema: OpenAPIV3.SchemaObject): OpenAPIV3.SchemaObject => {
+export const stripEmptyRequired = (schema: OpenAPIV3.SchemaObject): OpenAPIV3.SchemaObject => {
   if (schema.type === 'array') {
     return {
       ...schema,

@@ -4,6 +4,13 @@ import { CollectionConfig, GlobalConfig } from 'payload/types';
 import type { EndpointDocumentation, Example } from '@livit/portal.cms.payload-openapi';
 export type { EndpointDocumentation, Example } from '@livit/portal.cms.payload-openapi';
 
+export {
+  createPaginatedDocumentSchema,
+  getPluralSchemaName,
+  getSingularSchemaName,
+  stripEmptyRequired,
+} from '@livit/portal.cms.payload-openapi';
+
 type DocumentedEndpoint = Endpoint & EndpointDocumentation;
 
 export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
