@@ -76,9 +76,6 @@ export const Media: Block = {
       name: 'caption',
       label: 'Caption',
       type: 'richText',
-      admin: {
-        elements: ['link'],
-      },
     },
   ],
 };

@@ -1,18 +1,18 @@
 {
   "name": "@livit/portal.cms.create-payload-api-docs",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Create openapi docs for your payload cms",
   "bin": {
     "create-payload-api-docs": "bin/cli.js"
   },
   "dependencies": {
-    "@livit/portal.cms.payload-openapi": "^0.0.1",
+    "@livit/portal.cms.payload-openapi": "^1.0.9",
     "@swc/core": "^1.3.41",
     "@swc/register": "^0.1.10",
     "command-line-args": "^5.2.1",
     "command-line-usage": "^7.0.1",
     "get-tsconfig": "^4.5.0",
-    "payload": "^2.8.1"
+    "payload": "^2.16.1"
   },
   "scripts": {
     "build": "rimraf dist && tsc --sourceMap false",
