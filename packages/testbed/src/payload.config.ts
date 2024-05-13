@@ -1,21 +1,23 @@
-import { buildConfig } from 'payload/config';
+import { selectPlugin } from '@livit/portal.cms.payload-query';
+import rbac from '@livit/portal.cms.payload-rbac';
+import { defineEndpoint, swagger } from '@livit/portal.cms.payload-swagger';
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import formBuilder from '@payloadcms/plugin-form-builder';
 import nestedDocs from '@payloadcms/plugin-nested-docs';
 import seo from '@payloadcms/plugin-seo';
-import { selectPlugin } from '@livit/portal.cms.payload-query';
-import rbac from '@livit/portal.cms.payload-rbac';
-import { swagger, defineEndpoint } from '@livit/portal.cms.payload-swagger';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import path from 'path';
+import { buildConfig } from 'payload/config';
+import { Alerts } from './collections/Alerts';
 import Categories from './collections/Categories';
 import Media from './collections/Media';
+import { Pages } from './collections/Pages';
 import Posts from './collections/Posts';
 import Users from './collections/Users';
-import { Pages } from './collections/Pages';
-import MainMenu from './globals/MainMenu';
-import BeforeLogin from './components/BeforeLogin';
 import AfterDashboard from './components/AfterDashboard';
-import { Alerts } from './collections/Alerts';
 import BeforeDashboard from './components/BeforeDashboard';
+import BeforeLogin from './components/BeforeLogin';
+import MainMenu from './globals/MainMenu';
 
 // the payload config is the entrypoint for configuring the entire application
 // all the API REST, GraphQL, authentication, file uploads, data layer and admin UI is built from the config
@@ -69,7 +71,6 @@ export default buildConfig({
 
   // if not using graphQL it should be disabled for security and performance reasons
   // graphQL: false
-
   plugins: [
     formBuilder({
       formOverrides: {
@@ -137,6 +138,7 @@ export default buildConfig({
       summary: 'echo',
       description: 'echoes the value',
       responseSchema: { type: 'string' },
+      operationId: 'echo_operation_id',
     }),
     {
       path: '/_preferences/:key',
@@ -150,4 +152,8 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, 'payload-types.ts'),
   },
+  db: mongooseAdapter({
+    url: process.env.MONGODB_URI,
+  }),
+  editor: lexicalEditor({}),
 });

@@ -24,10 +24,13 @@ export const swagger =
             },
             alias: {
               ...webpackConfig.resolve?.alias,
-              ...['./swagger', './openapi'].reduce((acc, mockPath) => {
-                acc[path.resolve(__dirname, mockPath)] = path.resolve(__dirname, 'utils/dummy-module');
-                return acc;
-              }, {} as { [key: string]: string }),
+              ...['./swagger', './openapi'].reduce(
+                (acc, mockPath) => {
+                  acc[path.resolve(__dirname, mockPath)] = path.resolve(__dirname, 'utils/dummy-module');
+                  return acc;
+                },
+                {} as { [key: string]: string },
+              ),
             },
           },
         } as any;

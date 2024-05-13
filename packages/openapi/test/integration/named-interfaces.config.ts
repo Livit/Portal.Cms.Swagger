@@ -1,6 +1,6 @@
 import { buildConfig, Config } from 'payload/config';
 
-const config: Config = {
+const config = {
   collections: [
     {
       slug: 'pages',
@@ -62,6 +62,6 @@ const config: Config = {
       custom: { foo: 'bar' },
     },
   ],
-};
+} as unknown as Config;
 
 export default buildConfig(config);

@@ -13,6 +13,8 @@
     "@livit/portal.cms.payload-query": "*",
     "@livit/portal.cms.payload-rbac": "*",
     "@livit/portal.cms.payload-swagger": "*",
+    "@payloadcms/db-mongodb": "^1.5.1",
+    "@payloadcms/richtext-lexical": "0.10.0",
     "@payloadcms/plugin-form-builder": "^1.2.2",
     "@payloadcms/plugin-nested-docs": "^1.0.12",
     "@payloadcms/plugin-seo": "^2.3.2",
