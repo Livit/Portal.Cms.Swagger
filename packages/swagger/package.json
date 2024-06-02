@@ -1,6 +1,6 @@
 {
   "name": "@livit/portal.cms.payload-swagger",
-  "version": "1.0.8",
+  "version": "1.1.0",
   "description": "Swagger plugin for payload cms",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -13,7 +13,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@livit/portal.cms.payload-openapi": "^1.0.9",
+    "@livit/portal.cms.payload-openapi": "^1.1.0",
     "swagger-ui-express": "^4.6.2"
   },
   "peerDependencies": {
@@ -36,7 +36,7 @@
     "husky": "^9.0.11",
     "jest": "^29.7.0",
     "lint-staged": "^15.2.2",
-    "payload": "^2.16.1",
+    "payload": "^2.18.3",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
     "ts-jest": "^29.1.2",

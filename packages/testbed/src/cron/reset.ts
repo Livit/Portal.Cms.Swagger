@@ -1,7 +1,6 @@
 import payload from 'payload';
 import path from 'path';
 import fs from 'fs';
-import { User } from '../payload-types';
 import { MongoClient } from 'mongodb';
 import { generateContactFormSubmission, generateMailingListSubmission } from '../data/forms/submissionGenerator';
 import { homeData } from '../data/pages/homeData';
@@ -60,7 +59,7 @@ async function dropDB() {
 }
 
 async function seedData() {
-  const { id: demoUserId } = await payload.create<User>({
+  const { id: demoUserId } = await payload.create({
     collection: 'users',
     data: {
       name: 'Demo User',

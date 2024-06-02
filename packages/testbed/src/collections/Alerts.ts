@@ -1,5 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 import linkGroup from '../fields/linkGroup';
+import richText from '../fields/richText';
 
 export const Alerts: CollectionConfig = {
   slug: 'alerts',
@@ -78,15 +79,19 @@ export const Alerts: CollectionConfig = {
       ],
     },
     {
+      ...richText(
+        {},
+        {
+          elements: ['link'],
+          // leaves manage the toolbar options on the richText editor in the admin UI
+          leaves: ['bold', 'italic', 'underline'],
+          upload: false,
+        },
+      ),
       name: 'content',
       type: 'richText',
       required: true,
       localized: true,
-      admin: {
-        elements: ['link'],
-        // leaves manage the toolbar options on the richText editor in the admin UI
-        leaves: ['bold', 'italic', 'underline'],
-      },
     },
     linkGroup(),
   ],

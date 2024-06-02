@@ -105,7 +105,7 @@ export function caseStudiesData(imageId: string, authorId: string, parentId: str
       },
     ],
     slug: 'case-studies',
-    status: 'published',
+    _status: 'published',
     parent: parentId,
     author: authorId,
     meta: {

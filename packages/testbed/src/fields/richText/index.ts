@@ -1,14 +1,16 @@
-import { RichTextElement, RichTextField, RichTextLeaf } from 'payload/dist/fields/config/types';
+import { AdapterArguments, RichTextElement, RichTextLeaf, slateEditor } from '@payloadcms/richtext-slate';
+import { RichTextField } from 'payload/dist/fields/config/types';
 import deepMerge from '../../utilities/deepMerge';
+import link from '../link';
 import elements from './elements';
 import leaves from './leaves';
-import link from '../link';
 
 type RichText = (
   overrides?: Partial<RichTextField>,
   additions?: {
     elements?: RichTextElement[];
     leaves?: RichTextLeaf[];
+    upload?: boolean;
   },
 ) => RichTextField;
 
@@ -17,68 +19,72 @@ const richText: RichText = (
   additions = {
     elements: [],
     leaves: [],
+    upload: true,
   },
-) =>
-  deepMerge<RichTextField, Partial<RichTextField>>(
+) => {
+  const richText = deepMerge<AdapterArguments, any>(
     {
-      name: 'richText',
-      type: 'richText',
       admin: {
-        upload: {
-          collections: {
-            media: {
-              fields: [
-                {
-                  type: 'richText',
-                  name: 'caption',
-                  label: 'Caption',
-                  admin: {
-                    elements: [...elements],
-                    leaves: [...leaves],
-                  },
-                },
-                {
-                  type: 'radio',
-                  name: 'alignment',
-                  label: 'Alignment',
-                  options: [
-                    {
-                      label: 'Left',
-                      value: 'left',
-                    },
-                    {
-                      label: 'Center',
-                      value: 'center',
-                    },
-                    {
-                      label: 'Right',
-                      value: 'right',
-                    },
-                  ],
-                },
-                {
-                  name: 'enableLink',
-                  type: 'checkbox',
-                  label: 'Enable Link',
-                },
-                link({
-                  appearances: false,
-                  disableLabel: true,
-                  overrides: {
-                    admin: {
-                      condition: (_, data) => Boolean(data?.enableLink),
-                    },
-                  },
-                }),
-              ],
-            },
-          },
-        },
         elements: [...elements, ...(additions.elements || [])],
         leaves: [...leaves, ...(additions.leaves || [])],
+        ...(additions.upload && {
+          upload: {
+            collections: {
+              media: {
+                fields: [
+                  {
+                    type: 'richText',
+                    name: 'caption',
+                    label: 'Caption',
+                  },
+                  {
+                    type: 'radio',
+                    name: 'alignment',
+                    label: 'Alignment',
+                    options: [
+                      {
+                        label: 'Left',
+                        value: 'left',
+                      },
+                      {
+                        label: 'Center',
+                        value: 'center',
+                      },
+                      {
+                        label: 'Right',
+                        value: 'right',
+                      },
+                    ],
+                  },
+                  {
+                    name: 'enableLink',
+                    type: 'checkbox',
+                    label: 'Enable Link',
+                  },
+                  link({
+                    appearances: false,
+                    disableLabel: true,
+                    overrides: {
+                      admin: {
+                        condition: (_, data) => Boolean(data?.enableLink),
+                      },
+                    },
+                  }),
+                ],
+              },
+            },
+          },
+        }),
       },
     },
     overrides,
   );
+
+  return {
+    name: 'richText',
+    type: 'richText',
+    editor: slateEditor(richText),
+  };
+};
 
 export default richText;

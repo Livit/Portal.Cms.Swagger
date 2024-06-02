@@ -173,7 +173,7 @@ export function videoSeriesData(imageId: string, userId: string, parentId: strin
       },
     ],
     slug: 'video-series',
-    status: 'published',
+    _status: 'published',
     author: userId,
     meta: {
       title: 'Payload CMS Demo - Video Series',

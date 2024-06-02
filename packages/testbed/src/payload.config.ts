@@ -5,7 +5,7 @@ import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import formBuilder from '@payloadcms/plugin-form-builder';
 import nestedDocs from '@payloadcms/plugin-nested-docs';
 import seo from '@payloadcms/plugin-seo';
-import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import { slateEditor } from '@payloadcms/richtext-slate';
 import path from 'path';
 import { buildConfig } from 'payload/config';
 import { Alerts } from './collections/Alerts';
@@ -18,6 +18,7 @@ import AfterDashboard from './components/AfterDashboard';
 import BeforeDashboard from './components/BeforeDashboard';
 import BeforeLogin from './components/BeforeLogin';
 import MainMenu from './globals/MainMenu';
+import { webpackBundler } from '@payloadcms/bundler-webpack';
 
 // the payload config is the entrypoint for configuring the entire application
 // all the API REST, GraphQL, authentication, file uploads, data layer and admin UI is built from the config
@@ -28,26 +29,13 @@ export default buildConfig({
     // the user collection slug to use for authenticating to the admin panel, one per express app
     user: Users.slug,
 
-    // override existing payload styles with custom look
-    css: path.resolve(__dirname, './styles/custom.scss'),
-
     // custom components added to show demo info
     components: {
       beforeLogin: [BeforeLogin],
       beforeDashboard: [BeforeDashboard],
       afterDashboard: [AfterDashboard],
     },
-
-    webpack: webpackConfig => ({
-      ...webpackConfig,
-      resolve: {
-        ...webpackConfig.resolve,
-        alias: {
-          ...webpackConfig.resolve?.alias,
-          react: path.resolve(__dirname, '../node_modules/react'),
-        },
-      },
-    }),
+    bundler: webpackBundler(),
   },
 
   // collections in Payload are synonymous with database tables, models or entities from other frameworks and systems
@@ -155,5 +143,5 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.MONGODB_URI,
   }),
-  editor: lexicalEditor({}),
+  editor: slateEditor({}),
 });

@@ -1,15 +1,16 @@
 import { Operator } from 'payload/types';
 import type { ObjectPaths, ValueAtPath, Join, Split, IsAny } from 'ts-powertypes';
 
-type GreaterLessOperand<Field> = IsAny<Field> extends true
-  ? number | Date
-  : Field extends number
-  ? number
-  : Field extends Date
-  ? Date
-  : Field extends bigint
-  ? bigint
-  : never;
+type GreaterLessOperand<Field> =
+  IsAny<Field> extends true
+    ? number | Date
+    : Field extends number
+      ? number
+      : Field extends Date
+        ? Date
+        : Field extends bigint
+          ? bigint
+          : never;
 
 type StringOperand<Field> = IsAny<Field> extends true ? string : Field extends string ? Field : never;
 
@@ -18,28 +19,28 @@ type NearOperand<Field> = Field extends [number, number] ? [number | null | unde
 type Operand<Field, O extends Operator> = O extends 'equals'
   ? Field
   : O extends 'not_equals'
-  ? Field
-  : O extends 'greater_than'
-  ? GreaterLessOperand<Field>
-  : O extends 'greater_than_equal'
-  ? GreaterLessOperand<Field>
-  : O extends 'less_than'
-  ? GreaterLessOperand<Field>
-  : O extends 'less_than_equal'
-  ? GreaterLessOperand<Field>
-  : O extends 'like'
-  ? StringOperand<Field>
-  : O extends 'contains'
-  ? StringOperand<Field>
-  : O extends 'in'
-  ? Field[]
-  : O extends 'not_in'
-  ? Field[]
-  : O extends 'exists'
-  ? boolean
-  : O extends 'near'
-  ? NearOperand<Field>
-  : never;
+    ? Field
+    : O extends 'greater_than'
+      ? GreaterLessOperand<Field>
+      : O extends 'greater_than_equal'
+        ? GreaterLessOperand<Field>
+        : O extends 'less_than'
+          ? GreaterLessOperand<Field>
+          : O extends 'less_than_equal'
+            ? GreaterLessOperand<Field>
+            : O extends 'like'
+              ? StringOperand<Field>
+              : O extends 'contains'
+                ? StringOperand<Field>
+                : O extends 'in'
+                  ? Field[]
+                  : O extends 'not_in'
+                    ? Field[]
+                    : O extends 'exists'
+                      ? boolean
+                      : O extends 'near'
+                        ? NearOperand<Field>
+                        : never;
 
 type WhereField<Field> = {
   [O in Operator]?: Operand<Field, O>;

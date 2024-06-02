@@ -6,7 +6,5 @@ export default {
   name: 'hr',
   Button,
   Element,
-  plugins: [
-    plugin,
-  ],
+  plugins: [plugin],
 };
