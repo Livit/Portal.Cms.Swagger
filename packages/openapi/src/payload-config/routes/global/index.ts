@@ -8,6 +8,7 @@ import { getCustomPaths } from '../custom-paths';
 import { getRouteAccess } from '../../route-access';
 import { createVersionRoutes } from '../version-paths';
 import { SanitizedConfig } from 'payload/config';
+import { createUpsertSchema } from '../../../schemas/upsert-schema';
 
 export const getGlobalRoutes = async (
   global: SanitizedGlobalConfig,
@@ -55,7 +56,7 @@ export const getGlobalRoutes = async (
       ...fieldDefinitions,
     },
     requestBodies: {
-      [`${schemaName}Request`]: createRequestBody(schemaName),
+      [`${schemaName}Request`]: createRequestBody(createUpsertSchema(payloadConfig, schema)),
     },
     responses: {
       [`${schemaName}Response`]: createResponse('ok', schemaName),

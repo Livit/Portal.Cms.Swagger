@@ -3141,7 +3141,17 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/Page"
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/SharedMeta"
+                },
+                "title": {
+                  "nullable": true,
+                  "type": "string"
+                }
+              },
+              "title": "Page",
+              "type": "object"
             }
           }
         }
@@ -3150,7 +3160,44 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/User"
+              "properties": {
+                "email": {
+                  "type": "string"
+                },
+                "hash": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "lockUntil": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "loginAttempts": {
+                  "nullable": true,
+                  "type": "number"
+                },
+                "password": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "resetPasswordExpiration": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "resetPasswordToken": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "salt": {
+                  "nullable": true,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "email"
+              ],
+              "title": "User",
+              "type": "object"
             }
           }
         }
@@ -3159,7 +3206,59 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/PayloadPreference"
+              "properties": {
+                "key": {
+                  "nullable": true,
+                  "type": "string"
+                },
+                "user": {
+                  "oneOf": [
+                    {
+                      "properties": {
+                        "relationTo": {
+                          "enum": [
+                            "users"
+                          ]
+                        },
+                        "value": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "value",
+                        "relationTo"
+                      ],
+                      "type": "object"
+                    }
+                  ]
+                },
+                "value": {
+                  "anyOf": [
+                    {
+                      "type": "object"
+                    },
+                    {
+                      "items": {},
+                      "type": "array"
+                    },
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "number"
+                    },
+                    {
+                      "type": "boolean"
+                    }
+                  ],
+                  "nullable": true
+                }
+              },
+              "required": [
+                "user"
+              ],
+              "title": "PayloadPreference",
+              "type": "object"
             }
           }
         }
@@ -3168,7 +3267,18 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/PayloadMigration"
+              "properties": {
+                "batch": {
+                  "nullable": true,
+                  "type": "number"
+                },
+                "name": {
+                  "nullable": true,
+                  "type": "string"
+                }
+              },
+              "title": "PayloadMigration",
+              "type": "object"
             }
           }
         }
@@ -3177,7 +3287,17 @@
         "content": {
           "application/json": {
             "schema": {
-              "$ref": "#/components/schemas/MyGlobal"
+              "properties": {
+                "meta": {
+                  "$ref": "#/components/schemas/SharedMeta"
+                },
+                "title": {
+                  "nullable": true,
+                  "type": "string"
+                }
+              },
+              "title": "MyGlobal",
+              "type": "object"
             }
           }
         }
