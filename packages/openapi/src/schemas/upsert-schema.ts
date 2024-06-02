@@ -66,6 +66,11 @@ export const createUpsertSchema = (config: SanitizedConfig, schema: OpenAPIV3.Sc
 
     if (this.path?.length === 1 && this.key === 'required') {
       node = node.filter((key: string) => !removedProperties.includes(key));
+      if (node.length === 0) {
+        this.remove();
+        return;
+      }
+
       this.update(node);
       return;
     }
