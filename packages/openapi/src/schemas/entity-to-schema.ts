@@ -40,10 +40,13 @@ export const stripEmptyRequired = (schema: OpenAPIV3.SchemaObject): OpenAPIV3.Sc
     ...schema,
     properties:
       schema.properties &&
-      Object.entries(schema.properties).reduce((all, [key, value]) => {
-        all[key] = isReferenceObject(value) ? value : stripEmptyRequired(value);
-        return all;
-      }, {} as Record<string, OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject>),
+      Object.entries(schema.properties).reduce(
+        (all, [key, value]) => {
+          all[key] = isReferenceObject(value) ? value : stripEmptyRequired(value);
+          return all;
+        },
+        {} as Record<string, OpenAPIV3.SchemaObject | OpenAPIV3.ReferenceObject>,
+      ),
     oneOf: schema.oneOf?.map(option => (isReferenceObject(option) ? option : stripEmptyRequired(option))),
     anyOf: schema.anyOf?.map(option => (isReferenceObject(option) ? option : stripEmptyRequired(option))),
     allOf: schema.allOf?.map(option => (isReferenceObject(option) ? option : stripEmptyRequired(option))),

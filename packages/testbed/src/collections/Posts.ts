@@ -79,6 +79,7 @@ const Posts: CollectionConfig = {
   endpoints: [
     defineEndpoint({
       path: '/category/:category',
+      operationId: 'getPostsByCategory',
       method: 'get',
       summary: 'posts by category',
       description: 'get posts by category',

@@ -1,4 +1,6 @@
-export function homeDataDE(imageId: string, userId: string) {
+import { Page } from 'payload/generated-types';
+
+export function homeDataDE(imageId: string, userId: string): Partial<Page> {
   return {
     title: 'Heimat',
     hero: {
@@ -159,13 +161,12 @@ export function homeDataDE(imageId: string, userId: string) {
       },
     ],
     slug: 'heimat',
-    status: 'published',
+    _status: 'published',
     author: userId,
     meta: {
       title: 'Payload CMS Demo - Heimat',
       description:
         'Hier ist eine Inhaltsspalte mit einem eingebetteten Medienelement. Dieser Inhalt wird verwendet, um eine Meta-Beschreibung zu generieren.',
-      image: imageId,
     },
     createdAt: '2022-01-31T20:26:12.877Z',
     updatedAt: '2022-01-31T20:26:52.179Z',

@@ -1,4 +1,6 @@
-export function homeData(imageId: string, userId: string) {
+import { Page } from 'payload/payload-types';
+
+export function homeData(imageId: string, userId: string): Partial<Page> {
   return {
     title: 'Home',
     hero: {
@@ -159,13 +161,12 @@ export function homeData(imageId: string, userId: string) {
       },
     ],
     slug: 'home',
-    status: 'published',
+    _status: 'published',
     author: userId,
     meta: {
       title: 'Payload CMS Demo - Home',
       description:
         'Here is a column of content and it has an embedded Media element within it. This content will be used to generate a Meta Description.',
-      image: imageId,
     },
     createdAt: '2022-01-31T20:26:12.877Z',
     updatedAt: '2022-01-31T20:26:52.179Z',

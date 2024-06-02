@@ -1,4 +1,6 @@
-export function homeDataES(imageId: string, userId: string) {
+import { Page } from 'payload/generated-types';
+
+export function homeDataES(imageId: string, userId: string): Partial<Page> {
   return {
     title: 'Página de Inicio',
     hero: {
@@ -159,13 +161,12 @@ export function homeDataES(imageId: string, userId: string) {
       },
     ],
     slug: 'home',
-    status: 'published',
+    _status: 'published',
     author: userId,
     meta: {
       title: 'Payload CMS Demo - Página de Inicio',
       description:
         'Aquí hay una columna de contenido y tiene un elemento multimedia incrustado dentro. Este contenido se utilizará para generar una meta descripción.',
-      image: imageId,
     },
     createdAt: '2022-01-31T20:26:12.877Z',
     updatedAt: '2022-01-31T20:26:52.179Z',
