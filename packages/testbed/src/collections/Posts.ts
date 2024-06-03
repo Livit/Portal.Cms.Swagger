@@ -83,7 +83,7 @@ const Posts: CollectionConfig = {
       method: 'get',
       summary: 'posts by category',
       description: 'get posts by category',
-      responseSchema: 'posts',
+      responseSchema: { schema: 'posts' },
       errorResponseSchemas: {
         404: 'error',
       },

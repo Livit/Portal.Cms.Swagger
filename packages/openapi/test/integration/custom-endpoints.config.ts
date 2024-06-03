@@ -1,7 +1,7 @@
 import { buildConfig, Config } from 'payload/config';
 import { defineEndpoint } from '../../src';
 
-const config: Config = {
+const config = {
   collections: [
     {
       slug: 'pages',
@@ -14,11 +14,14 @@ const config: Config = {
       ],
       endpoints: [
         defineEndpoint({
+          operationId: 'get_echo',
           summary: 'echo',
           description: 'echoes the value',
           path: '/echo/:value',
           method: 'get',
-          responseSchema: { type: 'string' },
+          responseSchema: {
+            schema: { type: 'string' },
+          },
           handler: (req, res) => {
             const { value } = req.params;
             res.json(value);
@@ -35,6 +38,6 @@ const config: Config = {
       ],
     },
   ],
-};
+} as unknown as Config;
 
 export default buildConfig(config);

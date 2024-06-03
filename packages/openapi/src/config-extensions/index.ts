@@ -1,3 +1,3 @@
-export { defineEndpoint, getEndpointDocumentation, EndpointDocumentation } from './custom-endpoint';
+export { defineEndpoint, getEndpointDocumentation, EndpointDocumentation, MediaTypeSchema } from './custom-endpoint';
 
 export { Example } from './examples';

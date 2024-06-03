@@ -8,11 +8,15 @@ const isRefCollection = (config: SanitizedConfig, ref: string): boolean => {
   return config.collections.some(collection => getSingularSchemaName(collection) === schemaName);
 };
 
-export const createUpsertSchema = (config: SanitizedConfig, schema: OpenAPIV3.SchemaObject): OpenAPIV3.SchemaObject => {
+export const createUpsertSchema = (
+  config: SanitizedConfig,
+  schema: OpenAPIV3.SchemaObject,
+  uploadEnabled?: boolean,
+): OpenAPIV3.SchemaObject => {
   const removedProperties = ['id', 'lastModifiedBy', 'updatedAt', 'createdAt'];
   // Deep copy of the schema object
-  schema.title = schema.title ?? 'Upsert' + schema.title;
   const jsonSchema = JSON.parse(JSON.stringify(schema));
+  jsonSchema.title = `${schema.title ?? ''}Upsert`;
   // eslint-disable-next-line func-names, prefer-arrow-callback
   traverse(jsonSchema).forEach(function (node) {
     // Replace reference schema object with string type.
@@ -71,6 +75,19 @@ export const createUpsertSchema = (config: SanitizedConfig, schema: OpenAPIV3.Sc
         return;
       }
 
+      this.update(node);
+      return;
+    }
+
+    if (uploadEnabled && this.path?.length === 1 && this.key === 'properties') {
+      node = {
+        ...node,
+        file: {
+          type: 'string',
+          format: 'binary',
+          description: 'File to upload',
+        },
+      };
       this.update(node);
       return;
     }

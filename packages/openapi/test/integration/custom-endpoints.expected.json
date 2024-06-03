@@ -3150,7 +3150,7 @@
                   "type": "string"
                 }
               },
-              "title": "Page",
+              "title": "PageUpsert",
               "type": "object"
             }
           }
@@ -3196,7 +3196,7 @@
               "required": [
                 "email"
               ],
-              "title": "User",
+              "title": "UserUpsert",
               "type": "object"
             }
           }
@@ -3257,7 +3257,7 @@
               "required": [
                 "user"
               ],
-              "title": "PayloadPreference",
+              "title": "PayloadPreferenceUpsert",
               "type": "object"
             }
           }
@@ -3277,7 +3277,7 @@
                   "type": "string"
                 }
               },
-              "title": "PayloadMigration",
+              "title": "PayloadMigrationUpsert",
               "type": "object"
             }
           }
@@ -3296,7 +3296,7 @@
                   "type": "string"
                 }
               },
-              "title": "MyGlobal",
+              "title": "MyGlobalUpsert",
               "type": "object"
             }
           }
