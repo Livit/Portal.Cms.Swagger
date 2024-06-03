@@ -2,7 +2,7 @@ import { Endpoint } from 'payload/config';
 import { CollectionConfig, GlobalConfig } from 'payload/types';
 
 import type { EndpointDocumentation, Example } from '@livit/portal.cms.payload-openapi';
-export type { EndpointDocumentation, Example } from '@livit/portal.cms.payload-openapi';
+export type { EndpointDocumentation, Example, MediaTypeSchema } from '@livit/portal.cms.payload-openapi';
 
 export {
   createPaginatedDocumentSchema,
@@ -19,6 +19,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
     description,
     hasSecurity,
     operationId,
+    requestBodySchema,
     responseSchema,
     errorResponseSchemas,
     queryParameters,
@@ -35,6 +36,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
         description,
         hasSecurity,
         operationId,
+        requestBodySchema,
         responseSchema,
         errorResponseSchemas,
         queryParameters,

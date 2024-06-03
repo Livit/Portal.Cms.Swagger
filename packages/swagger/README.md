@@ -189,7 +189,7 @@ const Post: CollectionConfig = {
       description: 'gets the media of the given category',
       path: '/category/:category',
       method: 'get',
-      responseSchema: 'posts',
+      responseSchema: { schema: 'posts' },
       errorResponseSchemas: {
         404: 'errorResponse',
       },
@@ -216,7 +216,8 @@ import type { EndpointDocumentation } from 'payload-swagger';
 const documentation: EndpointDocumentation = {
   summary: 'media by category',
   description: 'gets the media of the given category',
-  responseSchema: 'posts',
+  requestBodySchema: { schema: 'postsRequest' },
+  responseSchema: { schema: 'posts' },
   errorResponseSchemas: {
     404: { type: 'object', properties: { message: { type: 'string' } }, required: ['message'] },
   },

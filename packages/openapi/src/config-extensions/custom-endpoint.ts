@@ -1,12 +1,18 @@
 import { OpenAPIV3 } from 'openapi-types';
 import { Endpoint } from 'payload/config';
 
+export type MediaTypeSchema = {
+  schema: string | OpenAPIV3.SchemaObject;
+  mediaType?: string;
+};
+
 export interface EndpointDocumentation {
   summary?: string;
   description: string;
   hasSecurity?: boolean;
   operationId: string;
-  responseSchema: OpenAPIV3.SchemaObject | string;
+  requestBodySchema?: MediaTypeSchema;
+  responseSchema: MediaTypeSchema;
   errorResponseSchemas?: Record<number, OpenAPIV3.SchemaObject | string>;
   queryParameters?: Record<
     string,
@@ -25,6 +31,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
     summary,
     description,
     operationId,
+    requestBodySchema,
     responseSchema,
     errorResponseSchemas,
     hasSecurity,
@@ -41,6 +48,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
         description,
         hasSecurity,
         operationId,
+        requestBodySchema,
         responseSchema,
         errorResponseSchemas,
         queryParameters,

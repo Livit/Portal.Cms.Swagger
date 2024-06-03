@@ -1,7 +1,7 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import nodePath from 'path';
 import { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types';
-import { createResponse } from '../../schemas';
+import { createRequestBody, createResponse } from '../../schemas';
 import { getEndpointDocumentation } from '../../config-extensions';
 import { objectEntries } from 'ts-powertools';
 import { getAuth } from '../route-access';
@@ -103,7 +103,8 @@ export const getCustomPaths = (
       operationId,
       hasSecurity,
       description = 'custom operation',
-      responseSchema = { type: 'object' },
+      requestBodySchema,
+      responseSchema = { schema: { type: 'object' } },
       errorResponseSchemas = {},
       queryParameters = {},
     } = getEndpointDocumentation(endpoint) || {};
@@ -131,8 +132,9 @@ export const getCustomPaths = (
               : schema,
         })),
       ],
+      requestBody: requestBodySchema && createRequestBody(requestBodySchema.schema, requestBodySchema.mediaType),
       responses: {
-        '200': createResponse('succesful operation', responseSchema),
+        '200': createResponse('succesful operation', responseSchema.schema, responseSchema.mediaType),
         ...Object.entries(errorResponseSchemas).reduce((responses, [code, schema]) => {
           responses[code] = createResponse(`${code} response`, schema);
           return responses;

@@ -132,6 +132,7 @@ export const getMainRoutes = async (
 
   const { schema, fieldDefinitions } = await entityToSchema(payloadConfig, collection);
   const { example, examples } = collection.custom?.openapi || {};
+  const uploadEnabled = !!collection.upload;
 
   const components: OpenAPIV3.ComponentsObject = {
     schemas: {
@@ -146,7 +147,10 @@ export const getMainRoutes = async (
     },
     requestBodies: {
       ...includeIfAvailable(collection, ['create', 'update'], {
-        [`${schemaName}Request`]: createRequestBody(createUpsertSchema(payloadConfig, schema)),
+        [`${schemaName}Request`]: createRequestBody(
+          createUpsertSchema(payloadConfig, schema, !!collection.upload),
+          uploadEnabled ? 'multipart/form-data' : undefined,
+        ),
       }),
     },
     responses: {

@@ -1,27 +1,32 @@
 import type { OpenAPIV3 } from 'openapi-types';
 
 export const createContent = (
-  content: string | OpenAPIV3.SchemaObject,
+  schema: string | OpenAPIV3.SchemaObject,
+  mediaType: string = 'application/json',
 ): {
-  [media: string]: OpenAPIV3.MediaTypeObject;
+  [mediaType: string]: OpenAPIV3.MediaTypeObject;
 } => ({
-  'application/json': {
+  [mediaType]: {
     schema:
-      typeof content === 'string'
+      typeof schema === 'string'
         ? {
-            '$ref': `#/components/schemas/${content}`,
+            '$ref': `#/components/schemas/${schema}`,
           }
-        : content,
+        : schema,
   },
 });
 
-export const createRequestBody = (content: string | OpenAPIV3.SchemaObject): OpenAPIV3.RequestBodyObject => ({
-  content: createContent(content),
+export const createRequestBody = (schema: string | OpenAPIV3.SchemaObject, mediaType?: string): OpenAPIV3.RequestBodyObject => ({
+  content: createContent(schema, mediaType),
 });
 
-export const createResponse = (description: string, content: string | OpenAPIV3.SchemaObject): OpenAPIV3.ResponseObject => ({
+export const createResponse = (
+  description: string,
+  schema: string | OpenAPIV3.SchemaObject,
+  mediaType?: string,
+): OpenAPIV3.ResponseObject => ({
   description,
-  content: createContent(content),
+  content: createContent(schema, mediaType),
 });
 
 type ComponentType = 'schemas' | 'responses' | 'requestBodies';

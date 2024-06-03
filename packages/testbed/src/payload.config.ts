@@ -125,7 +125,7 @@ export default buildConfig({
       root: true,
       summary: 'echo',
       description: 'echoes the value',
-      responseSchema: { type: 'string' },
+      responseSchema: { schema: { type: 'string' } },
       operationId: 'echo_operation_id',
     }),
     {
