@@ -11,7 +11,7 @@ export const replaceWithReferences = (
     componentsAsString = componentsAsString.replace(
       // escapeRegExp
       new RegExp(JSON.stringify(referenceSchemas[schemaName]).replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g'),
-      `"#/components/schemas/${schemaName}"`,
+      `{"$ref":"#/components/schemas/${schemaName}"}`,
     );
   });
 
