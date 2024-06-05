@@ -8,10 +8,17 @@ import { createPreferenceRouts } from './routes/preferences';
 import { merge } from '../utils';
 import { getAuthSchemas } from './auth-schemas';
 import { SanitizedConfig } from 'payload/config';
+import { getRichTextSchemas } from '../schemas/richtext-schema';
+import { replaceWithReferences } from '../utils/replace-with-references';
 
 export const analyzePayload = async (payloadConfig: SanitizedConfig, options: Options): Promise<Partial<OpenAPIV3.Document>> => {
   const { paths: preferencePaths, components: preferenceComponents } = createPreferenceRouts(options);
   const { paths: accessPath, components: accessComponents } = createAccessRoute(options);
+
+  const richTextSchemas = await getRichTextSchemas(payloadConfig);
+  const additionalComponents = {
+    schemas: richTextSchemas,
+  };
 
   const collectionDefinitions = await Promise.all(
     payloadConfig.collections.map(collection => getCollectionRoutes(collection, options, payloadConfig)),
@@ -37,8 +44,15 @@ export const analyzePayload = async (payloadConfig: SanitizedConfig, options: Op
     getAuthSchemas(payloadConfig, options),
     preferenceComponents,
     accessComponents,
-    ...collectionDefinitions.map(({ components }) => components),
-    ...globalDefinitions.map(({ components }) => components),
+    replaceWithReferences(
+      merge<OpenAPIV3.ComponentsObject>(
+        {},
+        ...collectionDefinitions.map(({ components }) => components),
+        ...globalDefinitions.map(({ components }) => components),
+      ),
+      richTextSchemas,
+    ),
+    additionalComponents,
     customComponents,
   );
 
