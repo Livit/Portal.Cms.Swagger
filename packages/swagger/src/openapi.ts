@@ -22,6 +22,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
     requestBodySchema,
     responseSchema,
     errorResponseSchemas,
+    pathParameters,
     queryParameters,
     custom,
     ...rest
@@ -39,6 +40,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
         requestBodySchema,
         responseSchema,
         errorResponseSchemas,
+        pathParameters,
         queryParameters,
       },
     },

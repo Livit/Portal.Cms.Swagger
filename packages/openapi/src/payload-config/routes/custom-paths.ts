@@ -7,6 +7,7 @@ import { objectEntries } from 'ts-powertools';
 import { getAuth } from '../route-access';
 import { Options } from '../../options';
 import { Endpoint, SanitizedConfig } from 'payload/config';
+import { PathParameters, QueryParameters } from '../../config-extensions/custom-endpoint';
 
 type Config = SanitizedConfig | SanitizedCollectionConfig | SanitizedGlobalConfig;
 type ConfigType = 'payload' | 'global' | 'collection';
@@ -83,6 +84,49 @@ const getPath = (basePath: string, relativePath: string): { path: string; parame
   return { path, parameters };
 };
 
+const mergePathParams = (
+  source: OpenAPIV3.ParameterObject[],
+  target: PathParameters,
+): (OpenAPIV3.ReferenceObject | OpenAPIV3.ParameterObject)[] => {
+  return source.map(param => {
+    const paramValue = target[param.name];
+    if (!paramValue) {
+      return param;
+    }
+
+    if (typeof paramValue === 'string') {
+      return { $ref: `#/components/parameters/${paramValue}` };
+    }
+
+    const schema = paramValue.schema
+      ? typeof paramValue.schema === 'string'
+        ? { '$ref': `#/components/schemas/${paramValue.schema}` }
+        : paramValue.schema
+      : param.schema;
+
+    return {
+      ...param,
+      schema,
+      description: paramValue.description || param.description,
+    };
+  });
+};
+
+const getQueryParams = (params: QueryParameters) => {
+  return objectEntries(params).map(([name, { description, required, schema }]) => ({
+    name,
+    description: description || name,
+    in: 'query',
+    required,
+    schema:
+      typeof schema === 'string'
+        ? {
+            '$ref': `#/components/schemas/${schema}`,
+          }
+        : schema,
+  }));
+};
+
 export const getCustomPaths = (
   config: Config,
   type: ConfigType,
@@ -106,6 +150,7 @@ export const getCustomPaths = (
       requestBodySchema,
       responseSchema = { schema: { type: 'object' } },
       errorResponseSchemas = {},
+      pathParameters = {},
       queryParameters = {},
     } = getEndpointDocumentation(endpoint) || {};
     if (!paths[path]) paths[path] = {};
@@ -117,21 +162,7 @@ export const getCustomPaths = (
       operationId,
       security,
       tags,
-      parameters: [
-        ...parameters,
-        ...objectEntries(queryParameters).map(([name, { description, required, schema }]) => ({
-          name,
-          description: description || name,
-          in: 'query',
-          required,
-          schema:
-            typeof schema === 'string'
-              ? {
-                  '$ref': `#/components/schemas/${schema}`,
-                }
-              : schema,
-        })),
-      ],
+      parameters: [...mergePathParams(parameters, pathParameters), ...getQueryParams(queryParameters)],
       requestBody: requestBodySchema && createRequestBody(requestBodySchema.schema, requestBodySchema.mediaType),
       responses: {
         '200': createResponse('succesful operation', responseSchema.schema, responseSchema.mediaType),

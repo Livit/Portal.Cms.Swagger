@@ -6,6 +6,24 @@ export type MediaTypeSchema = {
   mediaType?: string;
 };
 
+export type PathParameters = Record<
+  string,
+  | {
+      description?: string;
+      schema: OpenAPIV3.SchemaObject | string;
+    }
+  | string
+>;
+
+export type QueryParameters = Record<
+  string,
+  {
+    description?: string;
+    required?: boolean;
+    schema: OpenAPIV3.SchemaObject | string;
+  }
+>;
+
 export interface EndpointDocumentation {
   summary?: string;
   description: string;
@@ -14,14 +32,8 @@ export interface EndpointDocumentation {
   requestBodySchema?: MediaTypeSchema;
   responseSchema: MediaTypeSchema;
   errorResponseSchemas?: Record<number, OpenAPIV3.SchemaObject | string>;
-  queryParameters?: Record<
-    string,
-    {
-      description?: string;
-      required?: boolean;
-      schema: OpenAPIV3.SchemaObject | string;
-    }
-  >;
+  pathParameters?: PathParameters;
+  queryParameters?: QueryParameters;
 }
 
 type DocumentedEndpoint = Endpoint & EndpointDocumentation;
@@ -35,6 +47,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
     responseSchema,
     errorResponseSchemas,
     hasSecurity,
+    pathParameters,
     queryParameters,
     custom,
     ...rest
@@ -51,6 +64,7 @@ export function defineEndpoint(endpoint: DocumentedEndpoint): Endpoint {
         requestBodySchema,
         responseSchema,
         errorResponseSchemas,
+        pathParameters,
         queryParameters,
       },
     },

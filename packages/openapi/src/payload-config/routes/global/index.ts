@@ -1,7 +1,6 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import { SanitizedGlobalConfig } from 'payload/types';
 import { Options } from '../../../options';
-import { basicParameters } from '../../../base-config';
 import { createRef, createRequestBody, createResponse, createUpsertConfirmationSchema, entityToSchema } from '../../../schemas';
 import { getSingular, getSingularSchemaName, merge } from '../../../utils';
 import { getCustomPaths } from '../custom-paths';
@@ -9,6 +8,7 @@ import { getRouteAccess } from '../../route-access';
 import { createVersionRoutes } from '../version-paths';
 import { SanitizedConfig } from 'payload/config';
 import { createUpsertSchema } from '../../../schemas/upsert-schema';
+import { basicQueryParams } from '../../../base-config';
 
 export const getGlobalRoutes = async (
   global: SanitizedGlobalConfig,
@@ -26,7 +26,7 @@ export const getGlobalRoutes = async (
         operationId: `get_${schemaName}`,
         tags: [`global ${global.slug}`],
         security: await getRouteAccess(global, 'read', options.access),
-        parameters: basicParameters,
+        parameters: basicQueryParams,
         responses: {
           '200': createRef(schemaName, 'responses'),
         },
@@ -37,7 +37,7 @@ export const getGlobalRoutes = async (
         operationId: `post_${schemaName}`,
         tags: [`global ${global.slug}`],
         security: await getRouteAccess(global, 'update', options.access),
-        parameters: basicParameters,
+        parameters: basicQueryParams,
         requestBody: createRef(schemaName, 'requestBodies'),
         responses: {
           '200': createRef(`${schemaName}UpsertConfirmation`, 'responses'),

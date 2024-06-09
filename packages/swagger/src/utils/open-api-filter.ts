@@ -78,10 +78,12 @@ function isMatchOperationItem(operationPath: string, operationMethod: string, ta
   return false;
 }
 
-const filterComponentObjectKeys: (keyof OpenAPIV3.ComponentsObject)[] = ['schemas', 'responses', 'requestBodies'];
+const filterComponentObjectKeys: (keyof OpenAPIV3.ComponentsObject)[] = ['parameters', 'responses', 'requestBodies', 'schemas'];
 const getRefs = (node: unknown): FilterComponents => {
   const matchedResults = Array.from(
-    new Set<string>(JSON.stringify(node).match(/#\/components\/(?:schemas|responses|requestBodies)\/(?:[^"]+)/g) ?? []),
+    new Set<string>(
+      JSON.stringify(node).match(/#\/components\/(?:parameters|responses|requestBodies|schemas)\/(?:[^"]+)/g) ?? [],
+    ),
   );
 
   const refs = JSON.parse(JSON.stringify(matchedResults).replace(/#\/components\//g, '')) as string[];
@@ -95,9 +97,10 @@ const getRefs = (node: unknown): FilterComponents => {
       return acc;
     },
     {
-      schemas: [],
+      parameters: [],
       responses: [],
       requestBodies: [],
+      schemas: [],
     },
   );
   return result;
