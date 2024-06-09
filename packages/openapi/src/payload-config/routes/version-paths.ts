@@ -1,11 +1,11 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import { SanitizedCollectionConfig, SanitizedGlobalConfig } from 'payload/types';
-import { basicParameters, findParameters } from '../../base-config';
 import { Options } from '../../options';
 import { createPaginatedDocumentSchema, createRef, createResponse, entityToSchema } from '../../schemas';
 import { getPlural, getSingular, getSingularSchemaName } from '../../utils';
 import { getRouteAccess, isRouteAvailable } from '../route-access';
 import { SanitizedConfig } from 'payload/config';
+import { basicQueryParams, findQueryParams } from '../../base-config';
 
 const getRootPath = (slug: string, payloadConfig: SanitizedConfig) => {
   if (payloadConfig.globals?.find(global => global.slug === slug)) return `/globals/${slug}/versions`;
@@ -61,7 +61,7 @@ export const createVersionRoutes = async (
         operationId: `get_${schemaName}_versions`,
         tags,
         security,
-        parameters: [...basicParameters, ...findParameters],
+        parameters: findQueryParams,
         responses: {
           '200': createRef(`${schemaName}Versions`, 'responses'),
         },
@@ -82,8 +82,7 @@ export const createVersionRoutes = async (
             required: true,
             schema: { type: 'string' },
           },
-          ...basicParameters,
-          ...findParameters,
+          ...findQueryParams,
         ],
         responses: {
           '200': createRef(`${schemaName}Version`, 'responses'),
@@ -104,7 +103,7 @@ export const createVersionRoutes = async (
             required: true,
             schema: { type: 'string' },
           },
-          ...basicParameters,
+          ...basicQueryParams,
         ],
         responses: {
           '200': createRef(`${schemaName}UpsertConfirmation`, 'responses'),

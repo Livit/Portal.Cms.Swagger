@@ -20,63 +20,25 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/where"
           }
         ],
         "responses": {
@@ -94,28 +56,13 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -136,67 +83,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "requestBody": {
@@ -223,67 +128,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "responses": {
@@ -312,63 +175,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -398,28 +211,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -458,28 +256,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -508,63 +291,25 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/where"
           }
         ],
         "responses": {
@@ -588,28 +333,13 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -636,67 +366,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "requestBody": {
@@ -723,67 +411,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "responses": {
@@ -818,63 +464,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -910,28 +506,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -970,28 +551,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -1014,63 +580,25 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/where"
           }
         ],
         "responses": {
@@ -1094,28 +622,13 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -1142,67 +655,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "requestBody": {
@@ -1223,67 +694,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "responses": {
@@ -1312,63 +741,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -1404,28 +783,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -1458,28 +822,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -1597,63 +946,25 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/where"
           }
         ],
         "responses": {
@@ -1677,28 +988,13 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -1725,67 +1021,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "requestBody": {
@@ -1812,67 +1066,25 @@
         ],
         "parameters": [
           {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            },
-            "required": false
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            },
-            "required": true
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/fallbackLocale"
           },
           {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            },
-            "required": false
+            "$ref": "#/components/parameters/sort"
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/limit"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/page"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/requiredWhere"
           }
         ],
         "responses": {
@@ -1907,63 +1119,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "sort",
-            "in": "query",
-            "description": "sort by field",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "where",
-            "in": "query",
-            "description": "pass a where query to constrain returned documents (complex type, see documentation)",
-            "style": "deepObject",
-            "explode": true,
-            "allowReserved": true,
-            "schema": {
-              "$ref": "#/components/schemas/where"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "limit the returned documents to a certain number",
-            "schema": {
-              "type": "number"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "description": "get a specific page of documents",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -1999,28 +1161,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -2059,28 +1206,13 @@
             }
           },
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -2109,28 +1241,13 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "responses": {
@@ -2154,28 +1271,13 @@
         ],
         "parameters": [
           {
-            "name": "depth",
-            "in": "query",
-            "description": "number of levels to automatically populate relationships and uploads",
-            "schema": {
-              "type": "number"
-            }
+            "$ref": "#/components/parameters/depth"
           },
           {
-            "name": "locale",
-            "in": "query",
-            "description": "retrieves document(s) in a specific locale",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/locale"
           },
           {
-            "name": "fallback-locale",
-            "in": "query",
-            "description": "specifies a fallback locale if no locale value exists",
-            "schema": {
-              "type": "string"
-            }
+            "$ref": "#/components/parameters/fallbackLocale"
           }
         ],
         "requestBody": {
@@ -2200,6 +1302,79 @@
         "in": "cookie",
         "type": "apiKey",
         "name": "payload-token"
+      }
+    },
+    "parameters": {
+      "depth": {
+        "description": "number of levels to automatically populate relationships and uploads",
+        "in": "query",
+        "name": "depth",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "fallbackLocale": {
+        "description": "specifies a fallback locale if no locale value exists",
+        "in": "query",
+        "name": "fallback-locale",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "limit": {
+        "description": "limit the returned documents to a certain number",
+        "in": "query",
+        "name": "limit",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "locale": {
+        "description": "retrieves document(s) in a specific locale",
+        "in": "query",
+        "name": "locale",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "page": {
+        "description": "get a specific page of documents",
+        "in": "query",
+        "name": "page",
+        "schema": {
+          "type": "number"
+        }
+      },
+      "requiredWhere": {
+        "allowReserved": true,
+        "description": "pass a where query to constrain returned documents (complex type, see documentation)",
+        "explode": true,
+        "in": "query",
+        "name": "where",
+        "required": true,
+        "schema": {
+          "$ref": "#/components/schemas/where"
+        },
+        "style": "deepObject"
+      },
+      "sort": {
+        "description": "sort by field",
+        "in": "query",
+        "name": "sort",
+        "schema": {
+          "type": "string"
+        }
+      },
+      "where": {
+        "allowReserved": true,
+        "description": "pass a where query to constrain returned documents (complex type, see documentation)",
+        "explode": true,
+        "in": "query",
+        "name": "where",
+        "schema": {
+          "$ref": "#/components/schemas/where"
+        },
+        "style": "deepObject"
       }
     },
     "schemas": {

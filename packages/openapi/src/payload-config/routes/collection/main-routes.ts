@@ -1,6 +1,5 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import { SanitizedCollectionConfig } from 'payload/types';
-import { basicParameters, findParameters } from '../../../base-config';
 import { Options } from '../../../options';
 import {
   createPaginatedDocumentSchema,
@@ -14,6 +13,7 @@ import { getRouteAccess, includeIfAvailable } from '../../route-access';
 import { getSingular, getPlural, getSingularSchemaName, getPluralSchemaName } from '../../../utils';
 import { SanitizedConfig } from 'payload/config';
 import { createUpsertSchema } from '../../../schemas/upsert-schema';
+import { basicQueryParams, findQueryParams } from '../../../base-config';
 
 export const getMainRoutes = async (
   collection: SanitizedCollectionConfig,
@@ -34,7 +34,7 @@ export const getMainRoutes = async (
           operationId: `get_${pluralSchemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'read', options.access),
-          parameters: [...basicParameters, ...findParameters],
+          parameters: findQueryParams,
           responses: {
             '200': createRef(pluralSchemaName, 'responses'),
           },
@@ -47,7 +47,7 @@ export const getMainRoutes = async (
           operationId: `post_${schemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'create', options.access),
-          parameters: basicParameters,
+          parameters: basicQueryParams,
           requestBody: createRef(schemaName, 'requestBodies'),
           responses: {
             '200': createRef(`${schemaName}UpsertConfirmation`, 'responses'),
@@ -71,8 +71,7 @@ export const getMainRoutes = async (
               required: true,
               schema: { type: 'string' },
             },
-            ...basicParameters,
-            ...findParameters,
+            ...basicQueryParams,
           ],
           responses: {
             '200': createRef(schemaName, 'responses'),
@@ -95,7 +94,7 @@ export const getMainRoutes = async (
               required: true,
               schema: { type: 'string' },
             },
-            ...basicParameters,
+            ...basicQueryParams,
           ],
           requestBody: createRef(schemaName, 'requestBodies'),
           responses: {
@@ -119,7 +118,7 @@ export const getMainRoutes = async (
               required: true,
               schema: { type: 'string' },
             },
-            ...basicParameters,
+            ...basicQueryParams,
           ],
           responses: {
             '200': createRef(`${schemaName}UpsertConfirmation`, 'responses'),

@@ -1,10 +1,10 @@
 import type { OpenAPIV3 } from 'openapi-types';
 import { SanitizedCollectionConfig } from 'payload/types';
-import { basicParameters, findParameters } from '../../../base-config';
 import { Options } from '../../../options';
 import { createRef, createResponse } from '../../../schemas';
 import { getPlural, getPluralSchemaName, getSingularSchemaName } from '../../../utils';
 import { getRouteAccess, includeIfAvailable } from '../../route-access';
+import { bulkUpdateOrDeleteQueryParams } from '../../../base-config';
 
 export const getBulkRoutes = async (
   collection: SanitizedCollectionConfig,
@@ -25,7 +25,7 @@ export const getBulkRoutes = async (
           operationId: `patch_${pluralSchemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'update', options.access),
-          parameters: [...findParameters.map(param => ({ ...param, required: param.name === 'where' })), ...basicParameters],
+          parameters: bulkUpdateOrDeleteQueryParams,
           requestBody: createRef(schemaName, 'requestBodies'),
           responses: {
             '200': createRef(`${schemaName}Bulk`, 'responses'),
@@ -39,7 +39,7 @@ export const getBulkRoutes = async (
           operationId: `delete_${pluralSchemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'delete', options.access),
-          parameters: [...findParameters.map(param => ({ ...param, required: param.name === 'where' })), ...basicParameters],
+          parameters: bulkUpdateOrDeleteQueryParams,
           responses: {
             '200': createRef(`${schemaName}Bulk`, 'responses'),
           },

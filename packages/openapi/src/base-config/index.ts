@@ -6,6 +6,7 @@ import where from './where';
 import { Options } from '../options';
 import { createResponse } from '../schemas';
 import { paginatedDocument } from '../schemas/paginated-documents';
+import { allParameters } from './parameters';
 
 export * from './parameters';
 
@@ -53,6 +54,7 @@ const createBaseConfig = (options: Options): OpenAPIV3.Document => ({
         : {}),
     },
     schemas,
+    parameters: allParameters,
     responses,
   },
   externalDocs: {
