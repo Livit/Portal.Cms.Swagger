@@ -113,18 +113,24 @@ const mergePathParams = (
 };
 
 const getQueryParams = (params: QueryParameters) => {
-  return objectEntries(params).map(([name, { description, required, schema }]) => ({
-    name,
-    description: description || name,
-    in: 'query',
-    required,
-    schema:
-      typeof schema === 'string'
-        ? {
-            '$ref': `#/components/schemas/${schema}`,
-          }
-        : schema,
-  }));
+  return objectEntries(params).map(([name, paramValue]) => {
+    if (typeof paramValue === 'string') {
+      return { $ref: `#/components/parameters/${paramValue}` };
+    }
+    const { description, required, schema } = paramValue;
+    return {
+      name,
+      description: description || name,
+      in: 'query',
+      required,
+      schema:
+        typeof schema === 'string'
+          ? {
+              '$ref': `#/components/schemas/${schema}`,
+            }
+          : schema,
+    };
+  });
 };
 
 export const getCustomPaths = (

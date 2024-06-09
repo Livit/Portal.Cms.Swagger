@@ -31,7 +31,7 @@ const whereParameterObject: OpenAPIV3.ParameterObject = {
   schema: { $ref: '#/components/schemas/where' },
 };
 
-export const whereParameters: Record<string, OpenAPIV3.ParameterObject> = {
+const whereParameters: Record<string, OpenAPIV3.ParameterObject> = {
   where: whereParameterObject,
   requiredWhere: {
     ...whereParameterObject,
@@ -39,7 +39,7 @@ export const whereParameters: Record<string, OpenAPIV3.ParameterObject> = {
   },
 };
 
-export const paginationParameters: Record<string, OpenAPIV3.ParameterObject> = {
+const paginationParameters: Record<string, OpenAPIV3.ParameterObject> = {
   sort: {
     name: 'sort',
     in: 'query',

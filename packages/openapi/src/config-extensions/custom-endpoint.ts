@@ -17,11 +17,12 @@ export type PathParameters = Record<
 
 export type QueryParameters = Record<
   string,
-  {
-    description?: string;
-    required?: boolean;
-    schema: OpenAPIV3.SchemaObject | string;
-  }
+  | {
+      description?: string;
+      required?: boolean;
+      schema: OpenAPIV3.SchemaObject | string;
+    }
+  | string
 >;
 
 export interface EndpointDocumentation {
