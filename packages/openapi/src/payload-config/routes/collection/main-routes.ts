@@ -13,7 +13,7 @@ import { getRouteAccess, includeIfAvailable } from '../../route-access';
 import { getSingular, getPlural, getSingularSchemaName, getPluralSchemaName } from '../../../utils';
 import { SanitizedConfig } from 'payload/config';
 import { createUpsertSchema } from '../../../schemas/upsert-schema';
-import { basicQueryParams, findQueryParams } from '../../../base-config';
+import { basicQueryParams, findQueryParams, includeDraftParamIfAvailable } from '../../../base-config';
 
 export const getMainRoutes = async (
   collection: SanitizedCollectionConfig,
@@ -34,7 +34,7 @@ export const getMainRoutes = async (
           operationId: `get_${pluralSchemaName}`,
           tags: [collection.slug],
           security: await getRouteAccess(collection, 'read', options.access),
-          parameters: findQueryParams,
+          parameters: [...findQueryParams, ...includeDraftParamIfAvailable(collection)],
           responses: {
             '200': createRef(pluralSchemaName, 'responses'),
           },
@@ -72,6 +72,7 @@ export const getMainRoutes = async (
               schema: { type: 'string' },
             },
             ...basicQueryParams,
+            ...includeDraftParamIfAvailable(collection),
           ],
           responses: {
             '200': createRef(schemaName, 'responses'),
@@ -121,7 +122,7 @@ export const getMainRoutes = async (
             ...basicQueryParams,
           ],
           responses: {
-            '200': createRef(`${schemaName}UpsertConfirmation`, 'responses'),
+            '200': createRef(schemaName, 'responses'),
             '404': createRef('NotFoundError', 'responses'),
           },
         },
@@ -139,7 +140,7 @@ export const getMainRoutes = async (
       ...includeIfAvailable(collection, 'read', {
         [pluralSchemaName]: createPaginatedDocumentSchema(schemaName, plural),
       }),
-      ...includeIfAvailable(collection, ['create', 'update', 'delete'], {
+      ...includeIfAvailable(collection, ['create', 'update'], {
         [`${schemaName}UpsertConfirmation`]: createUpsertConfirmationSchema(schemaName, singleItem),
       }),
       ...fieldDefinitions,
@@ -155,7 +156,7 @@ export const getMainRoutes = async (
     responses: {
       ...includeIfAvailable(collection, 'read', { [`${schemaName}Response`]: createResponse('ok', schemaName) }),
       ...includeIfAvailable(collection, 'read', { [`${pluralSchemaName}Response`]: createResponse('ok', pluralSchemaName) }),
-      ...includeIfAvailable(collection, ['create', 'update', 'delete'], {
+      ...includeIfAvailable(collection, ['create', 'update'], {
         [`${schemaName}UpsertConfirmationResponse`]: createResponse('ok', `${schemaName}UpsertConfirmation`),
       }),
     },

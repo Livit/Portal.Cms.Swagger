@@ -1,6 +1,6 @@
 {
   "name": "@livit/portal.cms.payload-openapi",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Create openapi documentation for your payload cms",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -38,7 +38,7 @@
     "json-schema-walker": "2.0.0",
     "lint-staged": "^15.2.2",
     "openapi-types": "^12.1.0",
-    "payload": "^2.19.3",
+    "payload": "^2.21.0",
     "prettier": "^3.2.5",
     "rimraf": "^5.0.7",
     "ts-jest": "^29.1.2",
@@ -46,7 +46,7 @@
     "typescript": "^5.4.5"
   },
   "peerDependencies": {
-    "payload": "^2.19.3"
+    "payload": "^2.21.0"
   },
   "repository": {
     "type": "git",
