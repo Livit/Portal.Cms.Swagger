@@ -13,7 +13,7 @@
     "@livit/portal.cms.payload-query": "*",
     "@livit/portal.cms.payload-rbac": "*",
     "@livit/portal.cms.payload-swagger": "*",
-    "@payloadcms/bundler-webpack": "^1.0.6",
+    "@payloadcms/bundler-webpack": "^1.0.7",
     "@payloadcms/db-mongodb": "^1.5.1",
     "@payloadcms/richtext-slate": "1.5.2",
     "@payloadcms/plugin-form-builder": "^1.2.2",
@@ -22,7 +22,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "mongodb-memory-server": "^9.2.0",
-    "payload": "^2.19.3",
+    "payload": "^2.21.0",
     "react": "^18.3.1",
     "slate": "0.91.4",
     "slate-react": "0.92.0"

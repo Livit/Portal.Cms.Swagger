@@ -267,7 +267,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/PageUpsertConfirmationResponse"
+                        "$ref": "#/components/responses/PageResponse"
                     },
                     "404": {
                         "$ref": "#/components/responses/NotFoundErrorResponse"
@@ -562,7 +562,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/UserUpsertConfirmationResponse"
+                        "$ref": "#/components/responses/UserResponse"
                     },
                     "404": {
                         "$ref": "#/components/responses/NotFoundErrorResponse"
@@ -929,7 +929,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/PayloadPreferenceUpsertConfirmationResponse"
+                        "$ref": "#/components/responses/PayloadPreferenceResponse"
                     },
                     "404": {
                         "$ref": "#/components/responses/NotFoundErrorResponse"
@@ -1313,7 +1313,7 @@
                 ],
                 "responses": {
                     "200": {
-                        "$ref": "#/components/responses/PayloadMigrationUpsertConfirmationResponse"
+                        "$ref": "#/components/responses/PayloadMigrationResponse"
                     },
                     "404": {
                         "$ref": "#/components/responses/NotFoundErrorResponse"
@@ -1428,6 +1428,14 @@
                 "name": "depth",
                 "schema": {
                     "type": "number"
+                }
+            },
+            "draft": {
+                "description": "Set it to false to exclude draft document, default is false",
+                "in": "query",
+                "name": "draft",
+                "schema": {
+                  "type": "boolean"
                 }
             },
             "fallbackLocale": {

@@ -1,4 +1,5 @@
 import type { OpenAPIV3 } from 'openapi-types';
+import { SanitizedCollectionConfig } from 'payload/types';
 
 const basicParameters: Record<string, OpenAPIV3.ParameterObject> = {
   depth: {
@@ -60,8 +61,18 @@ const paginationParameters: Record<string, OpenAPIV3.ParameterObject> = {
   },
 };
 
+const draftParameters: Record<string, OpenAPIV3.ParameterObject> = {
+  draft: {
+    name: 'draft',
+    in: 'query',
+    description: 'Set it to false to exclude draft document, default is false',
+    schema: { type: 'boolean' },
+  },
+};
+
 export const allParameters = {
   ...basicParameters,
+  ...draftParameters,
   ...whereParameters,
   ...paginationParameters,
 };
@@ -73,6 +84,9 @@ const paginationQueryParams: OpenAPIV3.ReferenceObject[] = Object.keys(paginatio
 export const basicQueryParams: OpenAPIV3.ReferenceObject[] = Object.keys(basicParameters).map(name => ({
   $ref: `#/components/parameters/${name}`,
 }));
+
+export const includeDraftParamIfAvailable = (collection: SanitizedCollectionConfig): OpenAPIV3.ReferenceObject[] =>
+  collection.versions?.drafts ? [{ $ref: `#/components/parameters/draft` }] : [];
 
 export const findQueryParams = [...basicQueryParams, ...paginationQueryParams, { $ref: `#/components/parameters/where` }];
 
